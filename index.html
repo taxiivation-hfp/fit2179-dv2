@@ -43,36 +43,51 @@
   <div id="chart1" class="chart"></div>
 
   <script>
-    const chart1 = {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+const chart1 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-      "data": {
-        "url": "data/protein_foods.csv"
-      },
+  "data": {
+    "url": "data/protein_foods.csv"
+  },
 
-      "mark": "bar",
+  "transform": [
+    {
+      "calculate": "datum.price_aud / datum.protein_g",
+      "as": "cost_per_protein"
+    }
+  ],
 
-      "encoding": {
-        "x": {
-          "field": "food",
-          "type": "nominal",
-          "sort": "-y"
-        },
+  "mark": "bar",
 
-        "y": {
-          "field": "protein_g",
-          "type": "quantitative"
-        },
+  "encoding": {
+    "x": {
+      "field": "food",
+      "type": "nominal",
+      "sort": "-y"
+    },
 
-        "color": {
-          "field": "category",
-          "type": "nominal"
-        }
-      },
+    "y": {
+      "field": "cost_per_protein",
+      "type": "quantitative",
+      "title": "AUD per gram of protein"
+    },
 
-      "width": 700,
-      "height": 400
-    };
+    "color": {
+      "field": "category",
+      "type": "nominal"
+    },
+
+    "tooltip": [
+      {"field": "food"},
+      {"field": "price_aud"},
+      {"field": "protein_g"},
+      {"field": "cost_per_protein", "title": "AUD per g protein"}
+    ]
+  },
+
+  "width": 700,
+  "height": 400
+};
 
     vegaEmbed('#chart1', chart1);
   </script>
