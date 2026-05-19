@@ -139,30 +139,52 @@ const chart1 = {
   vegaEmbed('#chart2', chart2);
 
 
-  // CHART 3 - Histogram (calorie distribution)
-  const chart3 = {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+// CHART 3 - Price vs Protein (with calorie size)
+const chart3 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-    "data": {
-      "url": "data/protein_foods.csv"
+  "data": {
+    "url": "data/protein_foods.csv"
+  },
+
+  "mark": "circle",
+
+  "encoding": {
+    "x": {
+      "field": "price_aud",
+      "type": "quantitative",
+      "title": "Price (AUD)"
     },
 
-    "mark": "bar",
-
-    "encoding": {
-      "x": {
-        "field": "calories",
-        "bin": true,
-        "type": "quantitative"
-      },
-      "y": {
-        "aggregate": "count"
-      }
+    "y": {
+      "field": "protein_g",
+      "type": "quantitative",
+      "title": "Protein (g)"
     },
 
-    "width": 700,
-    "height": 400
-  };
+    "size": {
+      "field": "calories",
+      "type": "quantitative",
+      "title": "Calories"
+    },
 
-  vegaEmbed('#chart3', chart3);
+    "color": {
+      "field": "category",
+      "type": "nominal"
+    },
+
+    "tooltip": [
+      {"field": "food"},
+      {"field": "price_aud"},
+      {"field": "protein_g"},
+      {"field": "calories"},
+      {"field": "category"}
+    ]
+  },
+
+  "width": 700,
+  "height": 400
+};
+
+vegaEmbed('#chart3', chart3);
 </script>
