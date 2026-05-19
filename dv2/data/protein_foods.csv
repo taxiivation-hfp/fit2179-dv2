@@ -1,0 +1,31 @@
+food,protein_g,calories,price_aud,category,meal_type,state
+Chicken Breast,31,165,4.5,Meat,Homemade,VIC
+Eggs,13,155,1.2,Dairy,Homemade,VIC
+Greek Yogurt,10,97,1.5,Dairy,Snack,VIC
+Whey Protein,24,120,2,Supplement,Shake,VIC
+Tuna Can,25,130,2.5,Seafood,Snack,VIC
+Beef Mince,26,250,5,Meat,Homemade,VIC
+Tofu,8,76,1,Vegetarian,Homemade,VIC
+Salmon,22,208,6.5,Seafood,Homemade,NSW
+Protein Bar,20,220,4,Supplement,Snack,QLD
+Peanut Butter,25,588,1.8,Spread,Snack,WA
+Milk,8,103,1,Dairy,Drink,SA
+Oats,17,389,0.9,Grain,Breakfast,VIC
+Rice,2.7,130,0.6,Grain,Homemade,NSW
+Chicken Thigh,24,209,3.8,Meat,Homemade,QLD
+Turkey Breast,29,135,5.5,Meat,Homemade,WA
+Cottage Cheese,11,98,1.7,Dairy,Snack,SA
+Protein Shake Ready-to-Drink,30,160,5.5,Supplement,Drink,VIC
+Sardines,25,208,2.2,Seafood,Snack,TAS
+Lentils,9,116,0.8,Vegetarian,Homemade,ACT
+Chickpeas,19,364,1.1,Vegetarian,Homemade,NT
+Double Cheeseburger,26,450,7.5,Fast Food,Takeaway,VIC
+Grilled Chicken Burger,32,520,11.5,Fast Food,Takeaway,NSW
+Large Pepperoni Pizza Slice,15,380,6,Fast Food,Takeaway,QLD
+Kebab,28,650,13,Fast Food,Takeaway,VIC
+Chicken Parma,35,920,24,Restaurant,Dine-In,VIC
+Steak Meal,42,850,32,Restaurant,Dine-In,WA
+Sushi Roll Pack,14,310,9.5,Fast Food,Takeaway,SA
+Acai Bowl,6,410,16,Cafe,Cafe,NSW
+Avocado Toast,9,480,18,Cafe,Cafe,VIC
+Bodybuilder Meal Prep Bowl,45,720,15,Meal Prep,Takeaway,QLD
