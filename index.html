@@ -101,11 +101,98 @@ footer a{color:#e6b94a;}
 .note{font-family:'Spline Sans Mono',monospace;font-size:.7rem;color:#8d846f;line-height:1.6;}
 a.tjump{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);}
 .vega-actions a{color:var(--c-dairy)!important;}
+
+/* ===================== LARGE-SCREEN LAYOUT (1920×1080) ===================== */
+@media(min-width:1500px){
+  .wrap{max-width:1240px;}
+  body{font-size:17.5px;}
+  h1.title{font-size:5.4rem;}
+  .subtitle{font-size:1.22rem;max-width:680px;}
+}
+@media(min-width:1600px){ .grid-2{gap:30px;} }
+/* keep hero comfortably under one 1080p screen, leave a peek of content */
+@media(min-width:1500px) and (min-height:900px){
+  header.hero{padding:64px 0 52px;}
+  h1.title{font-size:5rem;}
+}
+@media(min-width:1500px) and (max-height:1100px){
+  header.hero{padding:56px 0 46px;}
+}
+
+/* ===================== SCROLL-REVEAL ANIMATIONS ===================== */
+@media(prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(26px);
+    transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;} .reveal.d3{transition-delay:.24s;}
+}
+
+/* ===================== HERO ANIMATION ===================== */
+header.hero{position:relative;overflow:hidden;}
+.hero .wrap{position:relative;z-index:3;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+.hero .kicker{animation:fadeUp .7s .05s both;}
+.hero h1.title{animation:fadeUp .8s .15s both;}
+.hero .subtitle{animation:fadeUp .8s .3s both;}
+.hero .hero-meta{animation:fadeUp .8s .45s both;}
+.hero h1.title em{position:relative;display:inline-block;}
+.hero h1.title em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.09em;
+  background:#e0784f;transform:scaleX(0);transform-origin:left;animation:underline 1s .9s both;}
+@keyframes underline{to{transform:scaleX(1);}}
+
+.hero-art{position:absolute;inset:0;z-index:1;pointer-events:none;}
+.hero-art .ill{position:absolute;opacity:.14;color:#f5f1e8;}
+@keyframes floatA{0%,100%{transform:translateY(0) rotate(-8deg);}50%{transform:translateY(-22px) rotate(-2deg);}}
+@keyframes floatB{0%,100%{transform:translateY(0) rotate(10deg);}50%{transform:translateY(-16px) rotate(4deg);}}
+@keyframes floatC{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-26px) rotate(3deg);}}
+.hero-art .a1{top:7%;right:5%;width:170px;animation:floatA 9s ease-in-out infinite;}
+.hero-art .a2{top:45%;right:19%;width:115px;animation:floatB 11s ease-in-out infinite;}
+.hero-art .a3{top:58%;right:3%;width:140px;animation:floatC 8s ease-in-out infinite;}
+.hero-art .a4{top:18%;right:33%;width:80px;animation:floatB 10s ease-in-out infinite .5s;}
+@media(max-width:900px){.hero-art{display:none;}}
+@media(prefers-reduced-motion:reduce){.hero-art .ill{animation:none!important;}}
+
+.hero-barbell{position:absolute;left:-50px;bottom:-80px;width:520px;color:#2a2620;opacity:.55;z-index:0;}
+@media(max-width:1100px){.hero-barbell{display:none;}}
+
+/* ===================== PAGE BACKGROUND ILLUSTRATIONS ===================== */
+.bg-art{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
+.bg-art .doodle{position:absolute;color:#cabd9f;opacity:.20;}
+.bg-art .d-a{top:13%;left:-30px;width:120px;transform:rotate(-18deg);}
+.bg-art .d-b{top:33%;right:-26px;width:150px;transform:rotate(14deg);}
+.bg-art .d-c{top:55%;left:-20px;width:104px;transform:rotate(8deg);}
+.bg-art .d-d{top:75%;right:-14px;width:134px;transform:rotate(-12deg);}
+.bg-art .d-e{top:90%;left:7%;width:92px;transform:rotate(20deg);}
+@media(max-width:1200px){.bg-art{display:none;}}
+
+/* ===================== STAT COUNTERS + CARD HOVER ===================== */
+.stat{position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease;}
+.stat:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(0,0,0,.6);}
+.stat .ico{position:absolute;right:-8px;bottom:-10px;width:78px;color:#e6b94a;opacity:.16;}
+.chart-card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;}
+.chart-card:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(0,0,0,.5);}
+.chart-card.signature:hover{border-color:var(--accent);}
+
+.act-head{position:relative;}
+.act-badge{position:absolute;right:0;top:46px;width:96px;color:var(--line);opacity:.95;}
+@media(max-width:1100px){.act-badge{display:none;}}
+
+.btn{position:relative;overflow:hidden;}
+.btn:active{transform:scale(.96);}
+.glossary{transition:transform .25s ease;}
+.glossary:hover{transform:translateY(-2px);}
+.takeaway{transition:border-color .25s,background .25s;}
+.chart-card:hover .takeaway{border-left-width:5px;}
 </style>
 </head>
 <body>
 
+<!-- page-wide faint background illustrations (injected by JS) -->
+<div class="bg-art" id="bgArt" aria-hidden="true"></div>
+
 <header class="hero">
+  <div class="hero-art" id="heroArt" aria-hidden="true"></div>
+  <div class="hero-barbell" id="heroBarbell" aria-hidden="true"></div>
   <div class="wrap">
     <div class="kicker">FIT2179 Data Visualisation 2 · Fitness food economics · Australia</div>
     <h1 class="title">The Cost of<br><em>Getting Big</em></h1>
@@ -131,9 +218,9 @@ a.tjump{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--l
   </div>
 
   <div class="statband">
-    <div class="stat"><div class="n">11×</div><div class="l">more protein per dollar from lentils than from salmon</div></div>
-    <div class="stat"><div class="n">$10/day</div><div class="l">already covers 170&nbsp;g protein and 3,700&nbsp;Calories — enough to bulk</div></div>
-    <div class="stat"><div class="n">+34%</div><div class="l">rise in Australian food prices since 2014</div></div>
+    <div class="stat" data-ico="lentil"><div class="n" data-count="11" data-suffix="×">0×</div><div class="l">more protein per dollar from lentils than from salmon</div></div>
+    <div class="stat" data-ico="wallet"><div class="n">$10/day</div><div class="l">already covers 170&nbsp;g protein and 3,700&nbsp;Calories — enough to bulk</div></div>
+    <div class="stat" data-ico="trend"><div class="n" data-count="34" data-prefix="+" data-suffix="%">+0%</div><div class="l">rise in Australian food prices since 2014</div></div>
   </div>
 
   <p class="lede" style="margin-top:30px;">
@@ -148,6 +235,7 @@ a.tjump{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--l
 </div>
 
 <div class="wrap act-head" id="act1">
+  <div class="act-badge" data-badge="protein" aria-hidden="true"></div>
   <div class="act-tag">Part one</div>
   <h2 class="act-title">Where protein is cheapest</h2>
   <p class="act-intro">Muscle is built from protein, so the first question is simple: which foods give you
@@ -201,6 +289,7 @@ a.tjump{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--l
 </div>
 
 <div class="wrap act-head" id="act2">
+  <div class="act-badge" data-badge="calorie" aria-hidden="true"></div>
   <div class="act-tag">Part two</div>
   <h2 class="act-title">Where calories are cheapest</h2>
   <p class="act-intro">Bulking isn't only about protein — you also need surplus energy, day after day, for your
@@ -252,6 +341,7 @@ a.tjump{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--l
 </div>
 
 <div class="wrap act-head" id="act3">
+  <div class="act-badge" data-badge="price" aria-hidden="true"></div>
   <div class="act-tag">Part three</div>
   <h2 class="act-title">The rising price of gains</h2>
   <p class="act-intro">Choosing good-value food matters more than ever, because the bill has grown. Australian food
@@ -328,6 +418,98 @@ a.tjump{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--l
 </footer>
 
 <script>
+/* ===================== SVG ILLUSTRATION LIBRARY ===================== */
+/* Simple, original line/figure illustrations. currentColor lets CSS theme them. */
+const ART = {
+  dumbbell:`<svg viewBox="0 0 100 50" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="14" cy="25" r="10" fill="currentColor" stroke="none"/><rect x="22" y="21" width="8" height="8" rx="2" fill="currentColor" stroke="none"/><line x1="30" y1="25" x2="70" y2="25"/><rect x="70" y="21" width="8" height="8" rx="2" fill="currentColor" stroke="none"/><circle cx="86" cy="25" r="10" fill="currentColor" stroke="none"/></svg>`,
+  barbell:`<svg viewBox="0 0 200 80" fill="currentColor"><rect x="10" y="22" width="10" height="36" rx="3"/><rect x="24" y="14" width="12" height="52" rx="3"/><rect x="40" y="30" width="120" height="20" rx="6"/><rect x="164" y="14" width="12" height="52" rx="3"/><rect x="180" y="22" width="10" height="36" rx="3"/></svg>`,
+  egg:`<svg viewBox="0 0 60 80" fill="currentColor"><path d="M30 4 C46 4 54 34 54 50 C54 68 43 76 30 76 C17 76 6 68 6 50 C6 34 14 4 30 4 Z"/></svg>`,
+  milk:`<svg viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"><path d="M18 6 h24 v14 l8 14 v50 a4 4 0 0 1 -4 4 h-32 a4 4 0 0 1 -4 -4 v-50 l8 -14 z"/><line x1="14" y1="46" x2="46" y2="46"/></svg>`,
+  bean:`<svg viewBox="0 0 80 60" fill="currentColor"><ellipse cx="28" cy="30" rx="20" ry="14" transform="rotate(-20 28 30)"/><ellipse cx="52" cy="34" rx="20" ry="14" transform="rotate(-20 52 34)"/></svg>`,
+  fish:`<svg viewBox="0 0 110 60" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"><path d="M8 30 C28 6 70 6 86 30 C70 54 28 54 8 30 Z"/><path d="M86 30 l18 -12 v24 z"/><circle cx="26" cy="26" r="3" fill="currentColor"/></svg>`,
+  banana:`<svg viewBox="0 0 90 70" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M16 14 C20 44 44 60 76 54 C58 58 30 46 26 16"/></svg>`,
+  drumstick:`<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"><circle cx="26" cy="26" r="18"/><path d="M38 38 L66 66"/><path d="M60 56 l12 4 -4 -12" fill="currentColor"/></svg>`,
+  wallet:`<svg viewBox="0 0 90 70" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"><rect x="8" y="14" width="74" height="46" rx="8"/><path d="M8 26 h74"/><circle cx="66" cy="42" r="5" fill="currentColor"/></svg>`,
+  trend:`<svg viewBox="0 0 90 70" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 56 L34 36 L50 48 L80 16"/><path d="M62 14 h20 v20" /></svg>`,
+  lentil:`<svg viewBox="0 0 80 70" fill="currentColor"><circle cx="24" cy="28" r="11"/><circle cx="50" cy="22" r="11"/><circle cx="40" cy="46" r="11"/></svg>`,
+  scale:`<svg viewBox="0 0 100 90" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><line x1="50" y1="10" x2="50" y2="70"/><line x1="20" y1="24" x2="80" y2="24"/><path d="M20 24 L10 48 a14 14 0 0 0 28 0 z" fill="currentColor" fill-opacity=".18"/><path d="M80 24 L70 48 a14 14 0 0 0 28 0 z" fill="currentColor" fill-opacity=".18"/><rect x="36" y="70" width="28" height="8" rx="3" fill="currentColor" stroke="none"/></svg>`
+};
+
+/* inject hero floating art */
+(function(){
+  const hero=document.getElementById("heroArt");
+  if(hero){
+    hero.innerHTML =
+      `<div class="ill a1">${ART.dumbbell}</div>`+
+      `<div class="ill a2">${ART.egg}</div>`+
+      `<div class="ill a3">${ART.fish}</div>`+
+      `<div class="ill a4">${ART.banana}</div>`;
+  }
+  const bb=document.getElementById("heroBarbell");
+  if(bb) bb.innerHTML=ART.barbell;
+
+  /* page background doodles */
+  const bg=document.getElementById("bgArt");
+  if(bg){
+    bg.innerHTML =
+      `<div class="doodle d-a">${ART.dumbbell}</div>`+
+      `<div class="doodle d-b">${ART.milk}</div>`+
+      `<div class="doodle d-c">${ART.lentil}</div>`+
+      `<div class="doodle d-d">${ART.drumstick}</div>`+
+      `<div class="doodle d-e">${ART.bean}</div>`;
+  }
+
+  /* stat icons */
+  document.querySelectorAll(".stat[data-ico]").forEach(s=>{
+    const key=s.getAttribute("data-ico");
+    const map={lentil:"lentil",wallet:"wallet",trend:"trend"};
+    const svg=ART[map[key]]; if(svg){const d=document.createElement("div");d.className="ico";d.innerHTML=svg;s.appendChild(d);}
+  });
+
+  /* act badges */
+  const badgeMap={protein:"drumstick",calorie:"scale",price:"trend"};
+  document.querySelectorAll(".act-badge[data-badge]").forEach(b=>{
+    const svg=ART[badgeMap[b.getAttribute("data-badge")]]; if(svg)b.innerHTML=svg;
+  });
+})();
+
+/* ===================== SCROLL REVEAL ===================== */
+(function(){
+  if(!("IntersectionObserver" in window)) return;
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+  },{threshold:0.12});
+  // tag elements to reveal
+  document.querySelectorAll(".chart-card,.glossary,.statband,.act-head,.lede,.meta-grid").forEach((el,i)=>{
+    el.classList.add("reveal"); if(i%3===1)el.classList.add("d1"); if(i%3===2)el.classList.add("d2");
+    io.observe(el);
+  });
+})();
+
+/* ===================== ANIMATED STAT COUNTERS ===================== */
+(function(){
+  const els=document.querySelectorAll(".n[data-count]");
+  if(!els.length) return;
+  const run=(el)=>{
+    const target=+el.getAttribute("data-count");
+    const pre=el.getAttribute("data-prefix")||"";
+    const suf=el.getAttribute("data-suffix")||"";
+    const dur=1100; const t0=performance.now();
+    const tick=(t)=>{
+      const p=Math.min(1,(t-t0)/dur);
+      const eased=1-Math.pow(1-p,3);
+      el.textContent=pre+Math.round(target*eased)+suf;
+      if(p<1)requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if(!("IntersectionObserver" in window)){els.forEach(run);return;}
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ run(e.target); io.unobserve(e.target);} });
+  },{threshold:0.6});
+  els.forEach(el=>io.observe(el));
+})();
+
 /* ===================== SHARED THEME ===================== */
 const INK="#1c1a16", PAPER="#f5f1e8", PAPER2="#ece5d6", LINE="#d9cfba",
       MUTED="#6f6857", ACCENT="#c1440e";
@@ -702,7 +884,7 @@ document.querySelectorAll("#filter1 .btn").forEach(b=>{
   });
 });
 
-function renderC8(b){ vegaEmbed("#c8panel",spec_c8(b),EMBED).catch(e=>console.error("c8",e)); }
+function renderC8(b){ vegaEmbed("#c8panel",spec_c8(b),EMBED).then(()=>fadeInViz("#c8panel")).catch(e=>console.error("c8",e)); }
 renderC8("$10/day");
 document.querySelectorAll("#budgetToggle .btn").forEach(b=>{
   b.addEventListener("click",()=>{
@@ -711,6 +893,25 @@ document.querySelectorAll("#budgetToggle .btn").forEach(b=>{
     renderC8(b.dataset.b);
   });
 });
+
+/* ===================== SCROLL PROGRESS BAR ===================== */
+(function(){
+  const bar=document.createElement("div");
+  bar.style.cssText="position:fixed;top:0;left:0;height:3px;width:0;z-index:999;"+
+    "background:linear-gradient(90deg,#d39b2c,#c1440e);transition:width .08s linear;";
+  document.body.appendChild(bar);
+  const upd=()=>{const h=document.documentElement;const sc=h.scrollTop||document.body.scrollTop;
+    const max=h.scrollHeight-h.clientHeight; bar.style.width=(max>0?(sc/max*100):0)+"%";};
+  window.addEventListener("scroll",upd,{passive:true}); upd();
+})();
+
+/* gentle fade-in for freshly rendered charts */
+function fadeInViz(sel){
+  const host=document.querySelector(sel);
+  if(!host)return;
+  host.style.opacity=0; host.style.transition="opacity .5s ease";
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{host.style.opacity=1;}));
+}
 </script>
 </body>
 </html>
