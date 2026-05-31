@@ -1,0 +1,28 @@
+item,afcd_key,price_aud_per_kg,category,store,food_name,classification,protein_g100,energy_kJ100,fat_g100,carb_g100,fibre_g100,sugars_g100,satfat_g100,sodium_mg100,calcium_mg100,iron_mg100,zinc_mg100,protein_per_100g,energy_kJ_per_100g,cost_per_100g,protein_g_per_dollar,cost_per_10g_protein,cost_per_1000kJ,pct_energy_protein
+Chicken breast,F002594,12.0,meat,Woolworths,"Chicken, breast, lean flesh, raw",18301,22.5,412,0.8,0.0,0.0,0.0,0.25,48,4,0.26,0.52,22.5,412,1.2,18.8,0.53,2.91,92.8
+Chicken thigh,F002806,11.0,meat,Woolworths,"Chicken, thigh, lean flesh, raw",18301,19.1,436,3.0,0.0,0.0,0.0,0.86,64,6,0.56,1.4,19.1,436,1.1,17.4,0.58,2.52,74.5
+Beef mince (regular),F000678,13.0,meat,Coles,"Beef, mince, regular fat, raw ",18101,22.4,710,8.9,0.0,0.0,0.0,3.83,68,7,1.5,2.27,22.4,710,1.3,17.2,0.58,1.83,53.6
+Beef mince (lean),F000666,16.0,meat,Coles,"Beef, mince, lower fat, raw ",18101,22.9,541,4.1,0.0,0.0,0.0,1.76,68,7,1.56,2.34,22.9,541,1.6,14.3,0.7,2.96,72.0
+Beef rump steak,F000739,26.0,meat,Woolworths,"Beef, rump steak, lean, raw",18101,20.4,450,2.8,0.0,0.0,0.0,1.0,50,4,2.1,4.1,20.4,450,2.6,7.8,1.27,5.78,77.1
+Kangaroo fillet,F004787,18.0,meat,Coles,"Kangaroo, loin fillet, raw",18201,21.4,397,0.9,0.0,0.0,0.0,0.26,40,3,3.4,2.3,21.4,397,1.8,11.9,0.84,4.53,91.6
+Eggs (whole),F003729,8.3,eggs,Woolworths,"Egg, chicken, whole, raw",17101,12.6,533,8.5,0.3,0.0,0.3,2.3,150,47,1.9,1.13,12.6,533,0.83,15.2,0.66,1.56,40.2
+Atlantic salmon fillet,F007827,32.0,seafood,Woolworths,"Salmon, Atlantic, fillet, raw",15101,20.5,965,16.7,0.0,0.0,0.0,3.77,32,48,0.31,0.42,20.5,965,3.2,6.4,1.56,3.32,36.1
+"Tuna, canned in brine",F009285,13.5,seafood,Coles,"Tuna, canned in brine, drained",15401,26.1,540,2.6,0.0,0.0,0.0,1.03,400,5,1.16,0.76,26.1,540,1.35,19.3,0.52,2.5,82.2
+"Tofu, firm",F009176,6.5,plant_protein,Woolworths,"Tofu (soy bean curd), firm, as purchased",20601,12.8,543,8.3,0.0,1.0,0.0,1.16,22,206,2.35,1.45,12.8,543,0.65,19.7,0.51,1.2,40.1
+Whey protein powder,F007493,30.0,supplement,Bulk Nutrients,"Protein powder, whey based, protein >70%, unfortified",30105,85.0,1568,2.2,1.6,1.8,1.3,1.23,200,420,0.49,0.25,85.0,1568,3.0,28.3,0.35,1.91,92.2
+Skim milk powder,F005652,13.0,dairy,Woolworths,"Milk, cow, powder, skim",19106,34.9,1519,0.8,56.0,0.0,56.0,0.51,420,1100,0.0,3.3,34.9,1519,1.3,26.8,0.37,0.86,39.1
+"Milk, regular fat",F005634,1.5,dairy,Woolworths,"Milk, cow, fluid, regular fat (~3.5%)",19101,3.3,270,3.4,5.4,0.0,5.4,2.28,35,106,0.02,0.33,3.3,270,0.15,22.0,0.45,0.56,20.8
+Natural yoghurt,F009694,5.5,dairy,Coles,"Yoghurt, natural, regular fat (~3%)",19201,5.1,306,3.2,5.0,0.1,4.9,2.17,58,175,0.0,0.57,5.1,306,0.55,9.3,1.08,1.8,28.3
+Cottage cheese,F002435,9.0,dairy,Woolworths,"Cheese, cottage",19403,17.0,556,5.7,1.8,0.0,1.8,3.47,277,89,0.05,0.24,17.0,556,0.9,18.9,0.53,1.62,52.0
+Peanut butter,F006577,7.0,plant_protein,Coles,"Peanut butter, smooth & crunchy, added sugar & salt",22202,22.2,2495,49.6,14.3,5.8,8.6,8.75,477,54,1.72,2.84,22.2,2495,0.7,31.7,0.32,0.28,15.1
+Rolled oats,F006143,2.5,grain,Woolworths,"Oats, rolled, uncooked",12101,12.2,1564,9.5,54.5,9.5,1.0,1.73,2,40,3.5,2.35,12.2,1564,0.25,48.8,0.2,0.16,13.3
+"White rice, uncooked",F007682,2.2,grain,Coles,"Rice, white, uncooked",12102,7.0,1422,0.9,74.0,0.8,0.0,0.17,1,4,0.2,1.2,7.0,1422,0.22,31.8,0.31,0.15,8.4
+"Brown rice, uncooked",F007648,3.5,grain,Coles,"Rice, brown, uncooked",12102,7.6,1452,3.1,69.1,3.5,1.1,0.56,2,7,0.8,1.7,7.6,1452,0.35,21.7,0.46,0.24,8.9
+White bread,F001463,2.8,grain,Woolworths,"Bread, from white flour",12201,9.5,1050,2.0,46.2,3.2,3.1,0.28,439,84,1.35,0.81,9.5,1050,0.28,33.9,0.29,0.27,15.4
+"Pasta, dry",F006429,2.0,grain,Coles,"Pasta, gluten free, boiled from dry, no added salt",12403,3.1,639,0.7,32.4,1.2,0.0,0.27,1,15,0.85,0.28,3.1,639,0.2,15.5,0.65,0.31,8.2
+Potato,F007386,3.0,vegetable,Woolworths,"Potato, sebago, peeled, raw",24101,2.5,303,0.2,13.8,2.2,0.4,0.0,4,3,0.55,0.35,2.5,303,0.3,8.3,1.2,0.99,14.0
+Sweet potato,F009035,3.5,vegetable,Woolworths,"Sweet potato, orange flesh, peeled, fresh, raw",24302,1.4,273,0.2,13.2,2.6,5.8,0.0,6,27,0.42,0.5,1.4,273,0.35,4.0,2.5,1.28,8.7
+Banana,F000262,4.0,fruit,Coles,"Banana, cavendish, peeled, raw",16502,1.4,399,0.2,19.9,2.2,13.4,0.0,0,5,0.29,0.16,1.4,399,0.4,3.5,2.86,1.0,6.0
+"Lentils, dry",F005178,4.0,plant_protein,Woolworths,"Lentil, French, hulled, dry",25101,28.3,1353,2.0,38.8,15.0,1.0,0.24,2,55,5.4,2.3,28.3,1353,0.4,70.8,0.14,0.3,35.6
+"Chickpeas, dry",F002881,3.8,plant_protein,Coles,"Chickpea, dried",25101,19.7,1373,5.5,38.5,20.8,2.2,0.56,11,159,4.6,3.1,19.7,1373,0.38,51.8,0.19,0.28,24.4
+"Baked beans, canned",F000243,4.0,plant_protein,Woolworths,"Baked beans, canned in tomato sauce",25201,4.8,381,0.3,13.0,4.8,5.0,0.04,298,39,1.01,0.51,4.8,381,0.4,12.0,0.83,1.05,21.4
