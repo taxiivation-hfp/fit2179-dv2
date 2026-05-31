@@ -5,338 +5,323 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Cost of Getting Big — Bulking Food Economics in Australia</title>
 
-<!-- Vega / Vega-Lite / Vega-Embed -->
 <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
 
-<!-- Fonts: distinctive display + clean body -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --ink:#14130f;
-  --paper:#f4efe6;
-  --paper-2:#eae3d4;
-  --barbell:#1a1a1a;
-  --rust:#c1440e;       /* expensive / animal */
-  --rust-soft:#e06a37;
-  --olive:#5f7138;      /* cheap / plant value */
-  --olive-soft:#8a9d54;
-  --gold:#d8a31a;       /* whey / supplement accent */
-  --steel:#3d5a6c;      /* dairy / cool */
-  --line:#cbbfa6;
-  --muted:#6b6354;
+  --ink:#1c1a16;
+  --paper:#f5f1e8;
+  --paper-2:#ece5d6;
+  --line:#d9cfba;
+  --muted:#6f6857;
+  --accent:#c1440e;        /* reserved: key claims, callouts only */
+  --c-meat:#b5462b; --c-seafood:#6d6a8f; --c-eggs:#d39b2c; --c-dairy:#4a7a8c;
+  --c-plant:#5f7138; --c-supp:#8a5a9b; --c-grain:#a9772f; --c-veg:#7d9150; --c-fruit:#c98a3e;
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
   margin:0;background:var(--paper);color:var(--ink);
-  font-family:'Archivo',system-ui,sans-serif;line-height:1.6;
-  background-image:radial-gradient(var(--line) 0.6px, transparent 0.6px);
-  background-size:22px 22px;
+  font-family:'Archivo',system-ui,sans-serif;font-size:16.5px;line-height:1.65;
 }
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 26px;}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em;}
+p{margin:0 0 1rem;}
 
-/* ---------- HERO ---------- */
-header.hero{
-  position:relative;overflow:hidden;
-  background:var(--ink);color:var(--paper);
-  padding:90px 0 70px;
-  border-bottom:6px solid var(--rust);
-}
-header.hero .wrap{position:relative;z-index:2;}
-.kicker{font-family:'Spline Sans Mono',monospace;letter-spacing:.32em;
-  text-transform:uppercase;font-size:.72rem;color:var(--gold);margin-bottom:18px;}
-h1.title{
-  font-family:'Anton',sans-serif;font-weight:400;
-  font-size:clamp(2.8rem,8vw,6.2rem);line-height:.92;
-  letter-spacing:-.01em;text-transform:uppercase;margin:0 0 8px;
-}
-h1.title .big{color:var(--rust-soft);display:block;}
-.subtitle{font-size:clamp(1rem,2.2vw,1.35rem);max-width:680px;color:#e8e0d0;margin-top:18px;}
-.hero-plates{position:absolute;right:-60px;top:50%;transform:translateY(-50%);
-  opacity:.16;z-index:1;}
-.hero-meta{margin-top:34px;font-family:'Spline Sans Mono',monospace;font-size:.78rem;
-  color:#bcb39c;display:flex;gap:26px;flex-wrap:wrap;}
+header.hero{background:var(--ink);color:var(--paper);padding:78px 0 60px;}
+.kicker{font-family:'Spline Sans Mono',monospace;letter-spacing:.22em;text-transform:uppercase;
+  font-size:.7rem;color:#d39b2c;margin-bottom:20px;}
+h1.title{font-size:clamp(2.6rem,7vw,4.8rem);line-height:1.0;margin:0;color:var(--paper);font-weight:600;}
+h1.title em{font-style:normal;color:#e0784f;}
+.subtitle{font-size:1.12rem;max-width:620px;color:#e6dfcf;margin-top:22px;}
+.hero-meta{margin-top:32px;font-family:'Spline Sans Mono',monospace;font-size:.74rem;
+  color:#b0a78f;display:flex;gap:24px;flex-wrap:wrap;}
 
-/* ---------- SECTION / ACT ---------- */
-.act{padding:64px 0 12px;}
-.act-tag{font-family:'Spline Sans Mono',monospace;font-size:.74rem;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--rust);margin-bottom:6px;}
-h2.act-title{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;
-  font-size:clamp(1.9rem,4.5vw,3rem);line-height:1;margin:0 0 14px;letter-spacing:-.01em;}
-.act-intro{font-size:1.06rem;max-width:720px;color:#33302a;}
+.glossary{background:var(--paper-2);border:1px solid var(--line);border-radius:8px;
+  padding:22px 26px;margin:34px 0 8px;}
+.glossary h3{font-size:1.05rem;margin:0 0 12px;}
+.glossary dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:.94rem;}
+.glossary dt{font-weight:700;color:var(--ink);}
+.glossary dd{margin:0;color:#4a4537;}
 
-.lede{font-size:1.05rem;color:#33302a;max-width:730px;margin:0 auto 26px;}
+.statband{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:34px 0 6px;}
+@media(max-width:720px){.statband{grid-template-columns:1fr;}}
+.stat{background:var(--ink);color:var(--paper);padding:20px 22px;border-radius:8px;}
+.stat .n{font-family:'Fraunces',serif;font-size:2.4rem;line-height:1;color:#e6b94a;}
+.stat .l{font-size:.85rem;color:#d7cfbd;margin-top:8px;line-height:1.4;}
 
-/* ---------- CHART CARD ---------- */
-.chart-card{
-  background:var(--paper);border:1.5px solid var(--ink);
-  border-radius:4px;padding:26px 26px 30px;margin:30px 0;
-  box-shadow:7px 7px 0 var(--ink);
-}
-.chart-card.flush{box-shadow:7px 7px 0 var(--rust);}
-.chart-num{font-family:'Spline Sans Mono',monospace;font-size:.72rem;letter-spacing:.2em;
-  color:var(--rust);text-transform:uppercase;}
-.chart-h{font-family:'Archivo';font-weight:800;font-size:1.45rem;line-height:1.15;
-  margin:4px 0 6px;letter-spacing:-.01em;}
-.chart-sub{font-size:.97rem;color:var(--muted);margin:0 0 18px;max-width:760px;}
+.act-head{padding:58px 0 6px;}
+.act-tag{font-family:'Spline Sans Mono',monospace;font-size:.72rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+h2.act-title{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.05;margin:0 0 14px;}
+.act-intro{font-size:1.05rem;max-width:680px;color:#39342a;}
+.lede{font-size:1.05rem;color:#39342a;max-width:700px;}
+
+.chart-card{background:#fbf8f0;border:1px solid var(--line);border-radius:10px;
+  padding:26px 28px 28px;margin:28px 0;box-shadow:0 1px 0 #fff inset,0 8px 22px -16px rgba(0,0,0,.35);}
+.chart-card.signature{border:2px solid var(--ink);box-shadow:0 10px 30px -18px rgba(0,0,0,.5);}
+.chart-num{font-family:'Spline Sans Mono',monospace;font-size:.7rem;letter-spacing:.14em;
+  color:var(--muted);text-transform:uppercase;}
+.chart-h{font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;line-height:1.15;margin:5px 0 7px;}
+.chart-sub{font-size:.97rem;color:var(--muted);margin:0 0 16px;max-width:760px;}
 .viz{width:100%;min-height:60px;overflow-x:auto;}
-.takeaway{
-  margin-top:18px;padding:14px 18px;border-left:4px solid var(--gold);
-  background:var(--paper-2);font-size:.95rem;
-}
-.takeaway b{color:var(--rust);}
+.takeaway{margin-top:16px;padding:13px 16px 13px 18px;border-left:3px solid var(--accent);
+  background:var(--paper-2);font-size:.94rem;border-radius:0 6px 6px 0;}
+.takeaway b{color:var(--accent);}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+@media(max-width:860px){.grid-2{grid-template-columns:1fr;}}
 
-/* two-up grid for compact charts */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-@media(max-width:820px){.grid-2{grid-template-columns:1fr;}}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:2px 0 14px;}
+.controls .lbl{font-size:.82rem;color:var(--muted);font-family:'Spline Sans Mono',monospace;
+  text-transform:uppercase;letter-spacing:.1em;margin-right:4px;}
+.btn{font-family:'Archivo';font-size:.86rem;font-weight:600;padding:7px 14px;border-radius:20px;
+  border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:.15s;}
+.btn:hover{background:var(--paper-2);}
+.btn.active{background:var(--ink);color:var(--paper);}
+.btn.accent.active{background:var(--accent);border-color:var(--accent);}
 
-/* signature stat band */
-.statband{display:flex;flex-wrap:wrap;gap:22px;margin:30px 0 8px;}
-.stat{flex:1 1 200px;background:var(--ink);color:var(--paper);padding:20px 22px;border-radius:4px;}
-.stat .n{font-family:'Anton';font-size:2.6rem;line-height:1;color:var(--gold);}
-.stat .l{font-size:.85rem;color:#d7cfbd;margin-top:8px;}
+.rule{height:1px;background:var(--line);margin:50px 0 0;}
 
-/* divider */
-.rule{height:2px;background:var(--ink);margin:54px 0 0;opacity:.18;}
-
-/* footer / metadata */
-footer{background:var(--ink);color:var(--paper);margin-top:70px;padding:54px 0 64px;
-  border-top:6px solid var(--olive);}
-footer h3{font-family:'Anton';font-weight:400;text-transform:uppercase;font-size:1.5rem;margin:0 0 14px;color:var(--olive-soft);}
-footer a{color:var(--gold);}
+footer{background:var(--ink);color:var(--paper);margin-top:64px;padding:54px 0 70px;}
+footer h3{font-size:1.4rem;margin:0 0 14px;color:#9fb06a;}
+footer a{color:#e6b94a;}
+.closing{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.2;
+  max-width:760px;margin:0 auto 44px;text-align:center;color:var(--paper);font-weight:500;}
+.closing em{font-style:normal;color:#e0784f;}
 .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;font-size:.9rem;color:#cfc7b4;}
-@media(max-width:820px){.meta-grid{grid-template-columns:1fr;}}
-.closing{font-family:'Anton';font-weight:400;text-transform:uppercase;
-  font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.02;color:var(--paper);
-  max-width:840px;margin:0 auto 40px;text-align:center;}
-.closing .hl{color:var(--rust-soft);}
-
-a.tjump{color:var(--rust);text-decoration:none;border-bottom:1px dotted var(--rust);}
-.note{font-family:'Spline Sans Mono',monospace;font-size:.72rem;color:var(--muted);}
-.vega-actions a{color:var(--steel)!important;}
+@media(max-width:720px){.meta-grid{grid-template-columns:1fr;}}
+.meta-grid h4{font-family:'Spline Sans Mono',monospace;font-size:.74rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#9fb06a;margin:0 0 6px;}
+.note{font-family:'Spline Sans Mono',monospace;font-size:.7rem;color:#8d846f;line-height:1.6;}
+a.tjump{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);}
+.vega-actions a{color:var(--c-dairy)!important;}
 </style>
 </head>
 <body>
 
-<!-- ============ HERO ============ -->
 <header class="hero">
-  <svg class="hero-plates" width="420" height="420" viewBox="0 0 100 100" aria-hidden="true">
-    <rect x="44" y="20" width="12" height="60" fill="#f4efe6"/>
-    <rect x="20" y="30" width="10" height="40" rx="2" fill="#f4efe6"/>
-    <rect x="32" y="24" width="8" height="52" rx="2" fill="#f4efe6"/>
-    <rect x="60" y="24" width="8" height="52" rx="2" fill="#f4efe6"/>
-    <rect x="70" y="30" width="10" height="40" rx="2" fill="#f4efe6"/>
-  </svg>
   <div class="wrap">
-    <div class="kicker">Data Visualisation 2 · Fitness Food Economics · Australia</div>
-    <h1 class="title">The Cost of<span class="big">Getting Big</span></h1>
-    <p class="subtitle">To build muscle you need two things: <strong>protein</strong> and <strong>calories</strong>.
-      Both cost money — and in Australia, that cost has climbed. This is the story of how to get the most
-      gains per dollar, and what grocery inflation has done to the price of bulking.</p>
+    <div class="kicker">FIT2179 Data Visualisation 2 · Fitness food economics · Australia</div>
+    <h1 class="title">The Cost of<br><em>Getting Big</em></h1>
+    <p class="subtitle">Building muscle takes two things — protein and calories — and both cost money.
+      This is a plain-language look at where Australians get the most muscle-building food per dollar,
+      and how much grocery prices have climbed.</p>
     <div class="hero-meta">
-      <span>27 STAPLE FOODS</span><span>268 NUTRIENTS</span><span>2014 → 2025 PRICES</span><span>8 STATES &amp; TERRITORIES</span>
+      <span>27 everyday foods</span><span>10 charts + 1 map</span><span>prices 2014 → 2025</span><span>8 capital cities</span>
     </div>
   </div>
 </header>
 
-<!-- ============ INTRO STAT BAND ============ -->
 <div class="wrap">
+
+  <div class="glossary">
+    <h3>A few words first, in plain English</h3>
+    <dl>
+      <dt>Bulking</dt><dd>Eating more than you burn, on purpose, so your body has the spare energy and protein to build muscle.</dd>
+      <dt>Protein</dt><dd>The nutrient muscle is made from. Lifters aim for a set amount each day (often around 150&nbsp;g).</dd>
+      <dt>Calories &amp; kilojoules (kJ)</dt><dd>Two ways of measuring food energy. Australia uses kilojoules on labels; 1&nbsp;Calorie ≈ 4.2&nbsp;kJ. More energy means more fuel for growth.</dd>
+      <dt>"Per dollar"</dt><dd>Throughout, we ask how much protein or energy you actually get for each $1 spent — the value-for-money view.</dd>
+    </dl>
+  </div>
+
   <div class="statband">
-    <div class="stat"><div class="n">11×</div><div class="l">more protein per dollar from lentils than salmon</div></div>
-    <div class="stat"><div class="n">$10/day</div><div class="l">already buys 171&nbsp;g protein &amp; 3,700&nbsp;kcal — enough to bulk</div></div>
+    <div class="stat"><div class="n">11×</div><div class="l">more protein per dollar from lentils than from salmon</div></div>
+    <div class="stat"><div class="n">$10/day</div><div class="l">already covers 170&nbsp;g protein and 3,700&nbsp;Calories — enough to bulk</div></div>
     <div class="stat"><div class="n">+34%</div><div class="l">rise in Australian food prices since 2014</div></div>
   </div>
+
   <p class="lede" style="margin-top:30px;">
-    Every chart below reads from real data: nutrient profiles from the
-    <strong>Australian Food Composition Database</strong> joined to current
-    <strong>Woolworths &amp; Coles</strong> shelf prices, set against
-    <strong>ABS</strong> food-price history. Follow the three acts — first the
-    <a class="tjump" href="#act1">protein economy</a>, then the
-    <a class="tjump" href="#act2">calorie economy</a>, then
-    <a class="tjump" href="#act3">cost over time and place</a>.
+    Everything here comes from real data: nutrient values from the
+    <strong>Australian Food Composition Database</strong>, joined to current
+    <strong>Woolworths and Coles</strong> shelf prices, set against
+    <strong>ABS</strong> food-price history. The story runs in three parts — first
+    <a class="tjump" href="#act1">where protein is cheapest</a>, then
+    <a class="tjump" href="#act2">where calories are cheapest</a>, then
+    <a class="tjump" href="#act3">how the bill has changed over time and across the country</a>.
   </p>
 </div>
 
-<!-- ============ ACT 1 ============ -->
-<section class="act" id="act1">
-  <div class="wrap">
-    <div class="act-tag">Act I</div>
-    <h2 class="act-title">The Protein Economy</h2>
-    <p class="act-intro">Muscle is built from protein, so the first question every lifter asks is:
-      where is protein cheapest? The answer overturns gym-bro instinct — the best value is not on the meat counter.</p>
-  </div>
-</section>
+<div class="wrap act-head" id="act1">
+  <div class="act-tag">Part one</div>
+  <h2 class="act-title">Where protein is cheapest</h2>
+  <p class="act-intro">Muscle is built from protein, so the first question is simple: which foods give you
+    the most protein for your money? The answer surprises most gym-goers — the best value isn't at the meat counter.</p>
+</div>
 
 <div class="wrap">
 
-  <!-- Chart 1 -->
-  <div class="chart-card flush">
-    <div class="chart-num">Chart 01 · Bar</div>
-    <div class="chart-h">Protein you can buy for one dollar</div>
-    <p class="chart-sub">Grams of protein per AUD$1, ranked across the bulking basket. Plant staples dominate; premium animal proteins sit at the bottom.</p>
+  <div class="chart-card signature">
+    <div class="chart-num">Chart 1 · Bar chart</div>
+    <div class="chart-h">How much protein one dollar buys</div>
+    <p class="chart-sub">Grams of protein you get per $1 spent, for each food. Use the buttons to focus on a food group.</p>
+    <div class="controls" id="filter1">
+      <span class="lbl">Show</span>
+      <button class="btn accent active" data-cat="all">All foods</button>
+      <button class="btn" data-cat="meat">Meat</button>
+      <button class="btn" data-cat="plant_protein">Plant proteins</button>
+      <button class="btn" data-cat="dairy">Dairy</button>
+      <button class="btn" data-cat="grain">Grains</button>
+    </div>
     <div id="c1" class="viz"></div>
-    <div class="takeaway">📌 <b>Lentils deliver about 11× more protein per dollar than Atlantic salmon</b> — yet salmon is the food most often marketed to gym-goers.</div>
+    <div class="takeaway">📌 <b>Lentils give about 11× more protein per dollar than salmon</b> — yet salmon is the food most often sold to gym-goers as "healthy".</div>
   </div>
 
-  <!-- Chart 2 -->
   <div class="chart-card">
-    <div class="chart-num">Chart 02 · Scatter (value frontier)</div>
-    <div class="chart-h">Price versus protein density</div>
-    <p class="chart-sub">Each food plotted by price ($/kg) against protein per 100&nbsp;g. Bubble size = protein per dollar; colour = food category. The closer to the top-left, the better the value.</p>
+    <div class="chart-num">Chart 2 · Scatter plot</div>
+    <div class="chart-h">Price versus how protein-rich a food is</div>
+    <p class="chart-sub">Each dot is a food, placed by its price (across) and how much protein it packs per 100&nbsp;g (up). The bigger the dot, the better the value. The best buys sit toward the top-left: protein-rich but cheap.</p>
     <div id="c2" class="viz"></div>
-    <div class="takeaway">📌 Whey is protein-dense but mid-priced. <b>Eggs, milk and legumes cluster in the high-value corner</b> — cheap and protein-rich.</div>
+    <div class="takeaway">📌 Eggs, milk and legumes sit in the <b>cheap-and-protein-rich corner</b>. Whey protein is very protein-rich but mid-priced; salmon and steak are costly per gram.</div>
   </div>
 
-  <!-- Chart 3 + 4 two-up -->
   <div class="grid-2">
     <div class="chart-card">
-      <div class="chart-num">Chart 03 · Lollipop</div>
-      <div class="chart-h">Animal vs plant: cost of 10&nbsp;g protein</div>
-      <p class="chart-sub">What it costs to buy a 10&nbsp;g "protein dollar" from each food, split by source.</p>
+      <div class="chart-num">Chart 3 · Lollipop chart</div>
+      <div class="chart-h">What 10&nbsp;g of protein costs</div>
+      <p class="chart-sub">The price of a small, fixed serve of protein from each food, coloured by whether it comes from a plant or an animal.</p>
       <div id="c3" class="viz"></div>
-      <div class="takeaway">📌 <b>Plant proteins are systematically cheaper per gram</b> than animal proteins.</div>
+      <div class="takeaway">📌 <b>Plant proteins are consistently cheaper</b> per gram than animal proteins.</div>
     </div>
     <div class="chart-card">
-      <div class="chart-num">Chart 04 · Heatmap</div>
-      <div class="chart-h">Cheap protein that also carries minerals</div>
-      <p class="chart-sub">Key micronutrients (iron, zinc, calcium) per dollar across high-value protein foods.</p>
+      <div class="chart-num">Chart 4 · Heatmap</div>
+      <div class="chart-h">Cheap protein that also brings minerals</div>
+      <p class="chart-sub">For the eight best-value protein foods, how much iron, zinc and calcium you get per dollar. Darker = more.</p>
       <div id="c4" class="viz"></div>
-      <div class="takeaway">📌 <b>Legumes and eggs pull double duty</b> — cheap protein <em>and</em> dense in iron &amp; zinc.</div>
+      <div class="takeaway">📌 Notice the top rows: <b>lentils, chickpeas and eggs</b> deliver cheap protein <em>and</em> are rich in iron and zinc.</div>
     </div>
   </div>
 
   <div class="rule"></div>
 </div>
 
-<!-- ============ ACT 2 ============ -->
-<section class="act" id="act2">
-  <div class="wrap">
-    <div class="act-tag">Act II</div>
-    <h2 class="act-title">The Calorie Economy</h2>
-    <p class="act-intro">Bulking is not only protein — it is a calorie surplus. To grow you must eat more energy
-      than you burn, day after day. So the second question is: which foods deliver the cheapest calories?</p>
-  </div>
-</section>
+<div class="wrap act-head" id="act2">
+  <div class="act-tag">Part two</div>
+  <h2 class="act-title">Where calories are cheapest</h2>
+  <p class="act-intro">Bulking isn't only about protein — you also need surplus energy, day after day, for your
+    body to grow. So the second question is: which foods deliver the cheapest calories?</p>
+</div>
 
 <div class="wrap">
 
-  <!-- Chart 5 -->
   <div class="chart-card">
-    <div class="chart-num">Chart 05 · Bar</div>
-    <div class="chart-h">The cheapest fuel: cost per 1,000&nbsp;kJ</div>
-    <p class="chart-sub">Lower is better. This is the energy economy of bulking — the foods that fill a calorie surplus for the least money.</p>
+    <div class="chart-num">Chart 5 · Bar chart</div>
+    <div class="chart-h">The cheapest fuel for a bulk</div>
+    <p class="chart-sub">Cost of 1,000&nbsp;kJ of energy (about 240&nbsp;Calories) from each food. Shorter bars are cheaper energy.</p>
     <div id="c5" class="viz"></div>
-    <div class="takeaway">📌 <b>Rice and oats are the cheapest calories money can buy.</b> Lean meats and salmon are an expensive way to hit a surplus.</div>
+    <div class="takeaway">📌 <b>Rice and oats are the cheapest calories you can buy.</b> Lean meats and salmon are an expensive way to fill an energy surplus.</div>
   </div>
 
-  <!-- Chart 6 -->
   <div class="chart-card">
-    <div class="chart-num">Chart 06 · Stacked bar</div>
-    <div class="chart-h">Where the energy comes from</div>
-    <p class="chart-sub">Share of each food's energy from protein, fat and carbohydrate. Sorted by protein density — the most "lean-bulk friendly" foods sit at the top.</p>
+    <div class="chart-num">Chart 6 · Stacked bar chart</div>
+    <div class="chart-h">What kind of energy each food gives</div>
+    <p class="chart-sub">For twelve key bulking foods, the share of energy coming from protein, fat and carbohydrate. Sorted so the most protein-heavy foods sit at the top.</p>
     <div id="c6" class="viz"></div>
-    <div class="takeaway">📌 The cheapest calories (rice, oats, bread) are <b>carb-dominant</b>; the leanest options carry their energy as protein.</div>
+    <div class="takeaway">📌 The cheapest calories (rice, oats, bread) are mostly <b>carbohydrate</b>; the leanest foods carry their energy as <b>protein</b>. A good bulk uses both.</div>
   </div>
 
-  <!-- Chart 7 -->
   <div class="chart-card">
-    <div class="chart-num">Chart 07 · Quadrant scatter</div>
-    <div class="chart-h">The bulking sweet spot</div>
-    <p class="chart-sub">Cost of calories (x) against cost of protein (y). The bottom-left quadrant — cheap calories <em>and</em> cheap protein — is where a budget bulk lives.</p>
+    <div class="chart-num">Chart 7 · Scatter plot (four quadrants)</div>
+    <div class="chart-h">The value sweet spot</div>
+    <p class="chart-sub">Cheap calories run left; cheap protein run down. The bottom-left box is the bargain zone — foods that are cheap for <em>both</em>.</p>
     <div id="c7" class="viz"></div>
-    <div class="takeaway">📌 <b>Oats, lentils and rice anchor the sweet spot.</b> Salmon, rump and kangaroo sit far out — flavour and variety, not value.</div>
+    <div class="takeaway">📌 <b>Oats, rice and lentils anchor the sweet spot.</b> Salmon, rump steak and kangaroo sit far out — they're for flavour and variety, not value.</div>
   </div>
 
-  <!-- Chart 8 — SIGNATURE -->
-  <div class="chart-card flush">
-    <div class="chart-num">Chart 08 · Custom signature visual</div>
-    <div class="chart-h">What does a daily bulk actually cost?</div>
-    <p class="chart-sub">Three real one-day meal plans built from the cheapest-value foods, at three budgets. Each column shows the food composition (by energy); the markers track protein and calories achieved. This is the heart of the story.</p>
-    <div id="c8" class="viz"></div>
-    <div class="takeaway">📌 <b>You don't need to spend big to get big.</b> A $10 day already clears 170&nbsp;g protein and 3,700&nbsp;kcal. Extra dollars buy <em>more protein</em>, not more calories — the calorie target is met cheaply, the protein target is what money raises.</div>
+  <div class="chart-card signature">
+    <div class="chart-num">Chart 8 · Custom signature visual</div>
+    <div class="chart-h">What does a day of bulking actually cost?</div>
+    <p class="chart-sub">Pick a daily budget. The plan below is built from the best-value foods and shows exactly what you'd eat,
+      how much protein and energy it delivers, and whether it clears a typical bulking target. This is the heart of the story.</p>
+    <div class="controls" id="budgetToggle">
+      <span class="lbl">Daily budget</span>
+      <button class="btn accent active" data-b="$10/day">$10 / day</button>
+      <button class="btn" data-b="$15/day">$15 / day</button>
+      <button class="btn" data-b="$20/day">$20 / day</button>
+    </div>
+    <div id="c8panel"></div>
+    <div class="takeaway">📌 <b>You don't need to spend big to get big.</b> Even a $10 day clears 170&nbsp;g of protein and 3,700&nbsp;Calories. Spending more mainly buys <em>extra protein and variety</em> — the calorie target is easy to hit cheaply.</div>
   </div>
 
   <div class="rule"></div>
 </div>
 
-<!-- ============ ACT 3 ============ -->
-<section class="act" id="act3">
-  <div class="wrap">
-    <div class="act-tag">Act III</div>
-    <h2 class="act-title">The Rising Price of Gains</h2>
-    <p class="act-intro">Knowing the cheapest foods matters more than ever, because the bill has grown. Australian food
-      prices were flat for years — then surged. And the cost of eating big is not the same everywhere.</p>
-  </div>
-</section>
+<div class="wrap act-head" id="act3">
+  <div class="act-tag">Part three</div>
+  <h2 class="act-title">The rising price of gains</h2>
+  <p class="act-intro">Choosing good-value food matters more than ever, because the bill has grown. Australian food
+    prices were flat for years, then climbed sharply — and the cost of groceries differs a little around the country.</p>
+</div>
 
 <div class="wrap">
 
-  <!-- Chart 9 -->
   <div class="chart-card">
-    <div class="chart-num">Chart 09 · Multi-line</div>
-    <div class="chart-h">Food prices over a decade (2014 = 100)</div>
-    <p class="chart-sub">Price index for the food groups a bulker lives on. Flat through the 2010s, then a steep climb from 2021.</p>
+    <div class="chart-num">Chart 9 · Multi-line chart</div>
+    <div class="chart-h">A decade of food prices</div>
+    <p class="chart-sub">Price level for the food groups a lifter lives on, with 2014 set to 100. The whole decade in one view: flat, then a steep climb from 2021.</p>
     <div id="c9" class="viz"></div>
-    <div class="takeaway">📌 <b>Meat &amp; seafood and bread &amp; cereal rose the most</b> — the protein and the calories both got pricier at once.</div>
+    <div class="takeaway">📌 Prices barely moved for years — then <b>everything rose together from 2021</b>. The next chart zooms in on that jump.</div>
   </div>
 
-  <!-- Chart 10 — SLOPE (upgraded from area) -->
   <div class="chart-card">
     <div class="chart-num">Chart 10 · Slope chart</div>
-    <div class="chart-h">Before the spike vs after: 2020 → 2024</div>
-    <p class="chart-sub">A direct read of how far each food group jumped across the inflation surge. Steeper slope = sharper pain.</p>
+    <div class="chart-h">Who climbed fastest during the spike</div>
+    <p class="chart-sub">Just the two protein-and-calorie groups a bulker cares about most, compared from 2020 to 2024. The steeper the line, the harder that food hit the budget.</p>
     <div id="c10" class="viz"></div>
-    <div class="takeaway">📌 In just four years, <b>meat &amp; seafood climbed from index 108 to 132</b> — the steepest line, and the costliest for a protein-hungry lifter.</div>
+    <div class="takeaway">📌 <b>Bread &amp; cereal and meat &amp; seafood both jumped over 20%</b> in four years — the carbs <em>and</em> the protein got pricier at the same time.</div>
   </div>
 
-  <!-- Chart 11 — MAP -->
-  <div class="chart-card flush">
-    <div class="chart-num">Chart 11 · Geographic map (required)</div>
-    <div class="chart-h">Where bulking costs the most</div>
-    <p class="chart-sub">Weekly cost of a high-protein bulking basket by state and territory, shaded by a relative grocery price index (Australia&nbsp;=&nbsp;100). Albers projection.</p>
+  <div class="chart-card signature">
+    <div class="chart-num">Chart 11 · Map (required)</div>
+    <div class="chart-h">Does bulking cost more in some cities?</div>
+    <p class="chart-sub">Each state is shaded by its capital city's grocery price index (national average&nbsp;=&nbsp;100); the dark circle on each capital is sized by the weekly cost of the same high-protein basket. Drawn on an Albers map projection. Hover any state or city for details.</p>
     <div id="c11" class="viz"></div>
-    <div class="takeaway">📌 <b>The Northern Territory pays the most</b> — remote freight pushes the same basket roughly 18% above the national average; the southern capitals pay least.</div>
+    <div class="takeaway">📌 The honest answer: <b>not by much</b>. Groceries vary only about 10% across the country — Melbourne, Canberra and Sydney are dearest; Darwin and Hobart cheapest. Supermarket pricing is remarkably uniform.</div>
   </div>
 
-  <!-- Chart 12 -->
   <div class="chart-card">
-    <div class="chart-num">Chart 12 · Derived comparison</div>
-    <div class="chart-h">The same bulk, then and now</div>
-    <p class="chart-sub">The identical weekly bulking basket priced at 2014 versus 2025, applying the ABS food price index. Same food, same gains — higher bill.</p>
+    <div class="chart-num">Chart 12 · Before-and-after comparison</div>
+    <div class="chart-h">The same weekly shop, 2014 versus 2025</div>
+    <p class="chart-sub">The identical bulking basket, priced eleven years apart using the ABS food index. Same food, same gains — bigger bill.</p>
     <div id="c12" class="viz"></div>
-    <div class="takeaway">📌 <b>The same bulking basket now costs about 34% more than in 2014.</b> Choosing high-value foods (Act&nbsp;I &amp; II) is how lifters claw that back.</div>
+    <div class="takeaway">📌 <b>The same bulking week now costs about 34% more than in 2014.</b> Choosing the high-value foods from Parts one and two is how lifters claw that back.</div>
   </div>
 
 </div>
 
-<!-- ============ FOOTER / METADATA ============ -->
 <footer>
   <div class="wrap">
-    <p class="closing">Getting big has never been about expensive food.<br>
-      It is about <span class="hl">protein and calories per dollar</span> — and knowing where to find them.</p>
+    <p class="closing">Getting big has never really been about expensive food.<br>
+      It's about <em>protein and calories per dollar</em> — and knowing where to find them.</p>
 
-    <h3>About this visualisation</h3>
     <div class="meta-grid">
       <div>
-        <p><strong>Why &amp; Who.</strong> Built for everyday Australians who train and want to gain muscle without
-        overspending — students, gym beginners, and budget-conscious lifters navigating rising grocery costs.</p>
-        <p><strong>What.</strong> Three combined sources:
-        nutrient profiles from the <a href="https://www.foodstandards.gov.au/science-data/food-composition-databases">Australian Food Composition Database, Release 3 (FSANZ)</a>;
-        current Woolworths &amp; Coles shelf prices (manually compiled, 2025–26);
-        and the food price trajectory from the <a href="https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia">ABS Consumer Price Index, Australia</a>.</p>
+        <h4>Why &amp; who</h4>
+        <p>Built for everyday Australians who train and want to gain muscle without overspending —
+        students, gym beginners and budget-conscious lifters facing rising grocery costs.</p>
+        <h4>What (data)</h4>
+        <p>Three sources, combined: nutrient profiles from the
+        <a href="https://www.foodstandards.gov.au/science-data/food-composition-databases">Australian Food Composition Database, Release&nbsp;3 (FSANZ)</a>;
+        current Woolworths &amp; Coles shelf prices (compiled 2025–26);
+        food-price history from the <a href="https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia">ABS Consumer Price Index, Australia</a>;
+        and, for the map, the <a href="https://www.numbeo.com/cost-of-living/">Numbeo grocery price index</a> for capital cities
+        (used because the ABS publishes food prices only as an eight-city average, not per state).</p>
       </div>
       <div>
-        <p><strong>How.</strong> Vega-Lite idioms — bar, scatter, bubble, lollipop, heatmap, stacked bar, quadrant
-        scatter, multi-line, slope chart, choropleth map, plus a custom signature "budget bulk" composite built from
-        derived per-dollar metrics (protein/$, cost per 1,000&nbsp;kJ).</p>
-        <p class="note">Author: [Danar Tan - 35541229] · Monash University FIT2179 · 2026.<br>
-        Prices are point-in-time retail estimates; CPI index follows the published ABS trajectory.
-        Text refined for grammar with the assistance of an AI writing tool.</p>
+        <h4>How (design)</h4>
+        <p>Ten Vega-Lite idioms — bar, scatter, lollipop, heatmap, stacked bar, four-quadrant scatter, multi-line,
+        slope chart and choropleth map — plus a custom, interactive "daily bulk" builder. Value metrics
+        (protein per dollar, cost per 1,000&nbsp;kJ) are derived from the joined data.</p>
+        <h4>Author &amp; acknowledgements</h4>
+        <p><strong>Danar Tan — 35541229</strong><br>Monash University, FIT2179, 2026.</p>
+        <p class="note">Prices are point-in-time retail estimates; the CPI series follows the published ABS
+        trajectory. Generative AI (Claude) assisted with code and wording; all data sourcing, decisions and
+        the final narrative are the author's. Map base: simplified Australian states GeoJSON (bundled in /data). Last updated May 2026.</p>
       </div>
     </div>
   </div>
@@ -344,176 +329,148 @@ a.tjump{color:var(--rust);text-decoration:none;border-bottom:1px dotted var(--ru
 
 <script>
 /* ===================== SHARED THEME ===================== */
-const PAPER="#f4efe6", INK="#14130f", RUST="#c1440e", OLIVE="#5f7138",
-      GOLD="#d8a31a", STEEL="#3d5a6c", MUTED="#6b6354";
+const INK="#1c1a16", PAPER="#f5f1e8", PAPER2="#ece5d6", LINE="#d9cfba",
+      MUTED="#6f6857", ACCENT="#c1440e";
 
 const CAT_SCALE = {
   domain:["meat","seafood","eggs","dairy","plant_protein","supplement","grain","vegetable","fruit"],
-  range :["#c1440e","#7a3b2e","#d8a31a","#3d5a6c","#5f7138","#9b59b6","#b07d2b","#8a9d54","#cf8d3a"]
+  range :["#b5462b","#6d6a8f","#d39b2c","#4a7a8c","#5f7138","#8a5a9b","#a9772f","#7d9150","#c98a3e"]
 };
 
 const baseConfig = {
-  background: PAPER,
-  font:"Archivo",
-  title:{ color:INK, fontSize:13, fontWeight:600, anchor:"start", subtitleColor:MUTED },
-  axis:{ labelColor:INK, titleColor:MUTED, gridColor:"#dcd3bd", domainColor:INK,
-         tickColor:INK, labelFont:"Spline Sans Mono", labelFontSize:10,
+  background:null, font:"Archivo",
+  title:{ color:INK, fontSize:13, fontWeight:600, anchor:"start", font:"Fraunces", subtitleColor:MUTED, subtitleFontSize:11.5 },
+  axis:{ labelColor:INK, titleColor:MUTED, gridColor:"#e6ddc9", domainColor:"#bcb39c",
+         tickColor:"#bcb39c", labelFont:"Spline Sans Mono", labelFontSize:10,
          titleFont:"Archivo", titleFontSize:11, titleFontWeight:600 },
-  legend:{ labelColor:INK, titleColor:MUTED, labelFont:"Archivo", titleFont:"Archivo" },
-  view:{ stroke:"transparent" }
+  legend:{ labelColor:INK, titleColor:MUTED, labelFont:"Archivo", titleFont:"Archivo", labelFontSize:11 },
+  view:{ stroke:null }
 };
 const EMBED = { actions:{export:true,source:true,compiled:false,editor:false}, renderer:"svg" };
-
 const DATA = (f)=>"data/"+f;
 
-/* ===================== ACT I ===================== */
+/* Chart 1 — protein per dollar (filterable) */
+function spec_c1(cat){
+  const filt = cat&&cat!=="all" ? [{filter:"datum.category==='"+cat+"'"}] : [];
+  return {
+    $schema:"https://vega.github.io/schema/vega-lite/v5.json",
+    config:baseConfig, width:"container", height: cat&&cat!=="all"?260:470,
+    data:{url:DATA("bulking_basket_prices.csv")},
+    transform:filt,
+    encoding:{ y:{field:"item",type:"nominal",sort:"-x",title:null,axis:{labelLimit:170}} },
+    layer:[
+      { mark:{type:"bar",cornerRadiusEnd:2,height:{band:0.78}},
+        encoding:{
+          x:{field:"protein_g_per_dollar",type:"quantitative",title:"Grams of protein per $1"},
+          color:{field:"category",type:"nominal",scale:CAT_SCALE,title:"Food group",
+                  legend:{orient:"bottom",columns:5,symbolType:"square"}},
+          tooltip:[{field:"item",title:"Food"},{field:"protein_g_per_dollar",title:"Protein g per $1",format:".0f"},
+            {field:"price_aud_per_kg",title:"Price $/kg",format:"$.2f"},{field:"protein_g100",title:"Protein g /100g"}]
+        }},
+      { mark:{type:"text",align:"left",dx:4,font:"Spline Sans Mono",fontSize:9,color:INK},
+        encoding:{ x:{field:"protein_g_per_dollar",type:"quantitative"},
+          text:{field:"protein_g_per_dollar",type:"quantitative",format:".0f"} }}
+    ]
+  };
+}
 
-/* Chart 1 — protein per dollar bar */
-const c1 = {
-  $schema:"https://vega.github.io/schema/vega-lite/v5.json",
-  config:baseConfig, width:"container", height:480,
-  title:{text:"Grams of protein per $1 spent",subtitle:"Bulking basket · ranked high to low"},
-  data:{url:DATA("bulking_basket_prices.csv")},
-  encoding:{
-    y:{field:"item",type:"nominal",sort:"-x",title:null,axis:{labelLimit:160}}
-  },
-  layer:[
-    { mark:{type:"bar",cornerRadiusEnd:2},
-      encoding:{
-        x:{field:"protein_g_per_dollar",type:"quantitative",title:"Protein (g) per AUD $1"},
-        color:{field:"category",type:"nominal",scale:CAT_SCALE,title:"Food group"},
-        tooltip:[
-          {field:"item",title:"Food"},
-          {field:"protein_g_per_dollar",title:"Protein g / $1"},
-          {field:"price_aud_per_kg",title:"Price $/kg"},
-          {field:"protein_g100",title:"Protein g /100g"}
-        ]
-      }
-    },
-    { mark:{type:"text",align:"left",dx:4,font:"Spline Sans Mono",fontSize:9,color:INK},
-      encoding:{
-        x:{field:"protein_g_per_dollar",type:"quantitative"},
-        text:{field:"protein_g_per_dollar",type:"quantitative",format:".0f"}
-      }
-    }
-  ]
-};
-
-/* Chart 2 — value frontier scatter */
 const c2 = {
   $schema:"https://vega.github.io/schema/vega-lite/v5.json",
-  config:baseConfig, width:"container", height:430,
-  title:{text:"Price vs protein density — the value frontier",subtitle:"Top-left = cheap and protein-rich. Bubble size = protein per $1."},
+  config:baseConfig, width:"container", height:420,
   data:{url:DATA("bulking_basket_prices.csv")},
   layer:[
-    { mark:{type:"circle",opacity:0.85,stroke:INK,strokeWidth:0.5},
+    { mark:{type:"circle",opacity:0.85,stroke:INK,strokeWidth:0.4},
       encoding:{
-        x:{field:"price_aud_per_kg",type:"quantitative",title:"Price (AUD $/kg)",scale:{zero:true}},
-        y:{field:"protein_g100",type:"quantitative",title:"Protein (g per 100 g)"},
-        size:{field:"protein_g_per_dollar",type:"quantitative",title:"Protein g / $1",scale:{range:[40,900]}},
-        color:{field:"category",type:"nominal",scale:CAT_SCALE,title:"Food group"},
-        tooltip:[{field:"item",title:"Food"},{field:"price_aud_per_kg",title:"$/kg"},
-          {field:"protein_g100",title:"Protein /100g"},{field:"protein_g_per_dollar",title:"Protein g/$1"}]
-      }
-    },
+        x:{field:"price_aud_per_kg",type:"quantitative",title:"Price (AUD $ per kg)",scale:{zero:true}},
+        y:{field:"protein_g100",type:"quantitative",title:"Protein (grams per 100 g)"},
+        size:{field:"protein_g_per_dollar",type:"quantitative",title:"Protein per $1",scale:{range:[40,850]}},
+        color:{field:"category",type:"nominal",scale:CAT_SCALE,title:"Food group",legend:{orient:"bottom",columns:5,symbolType:"circle"}},
+        tooltip:[{field:"item",title:"Food"},{field:"price_aud_per_kg",title:"$/kg",format:"$.2f"},
+          {field:"protein_g100",title:"Protein /100g"},{field:"protein_g_per_dollar",title:"Protein per $1",format:".0f"}]
+      }},
     { mark:{type:"text",align:"left",dx:9,dy:-9,font:"Archivo",fontSize:9.5,color:INK},
-      transform:[{filter:"datum.item==='Whey protein powder'||datum.item==='Lentils, dry'||datum.item==='Atlantic salmon fillet'||datum.item==='Chicken breast'||datum.item==='Eggs (whole)'||datum.item==='Beef rump steak'"}],
-      encoding:{
-        x:{field:"price_aud_per_kg",type:"quantitative"},
-        y:{field:"protein_g100",type:"quantitative"},
-        text:{field:"item"}
-      }
-    },
-    { data:{values:[{x:6,y:80,t:"High value zone →"}]},
-      mark:{type:"text",align:"left",color:OLIVE,font:"Archivo",fontWeight:700,fontSize:11},
-      encoding:{x:{field:"x",type:"quantitative"},y:{field:"y",type:"quantitative"},text:{field:"t"}}
-    }
+      transform:[{filter:"indexof(['Whey protein powder','Lentils, dry','Atlantic salmon fillet','Chicken breast','Eggs (whole)','Beef rump steak'],datum.item)>=0"}],
+      encoding:{x:{field:"price_aud_per_kg",type:"quantitative"},y:{field:"protein_g100",type:"quantitative"},text:{field:"item"}}},
+    { data:{values:[{x:5,y:82,t:"← cheaper      best value: up here"}]},
+      mark:{type:"text",align:"left",color:ACCENT,font:"Archivo",fontWeight:700,fontSize:10.5},
+      encoding:{x:{field:"x",type:"quantitative"},y:{field:"y",type:"quantitative"},text:{field:"t"}}}
   ]
 };
 
-/* Chart 3 — lollipop cost per 10g protein, animal vs plant */
-const animalCats = ["meat","seafood","eggs","dairy"];
 const c3 = {
   $schema:"https://vega.github.io/schema/vega-lite/v5.json",
   config:baseConfig, width:"container", height:470,
-  title:{text:"Cost of 10 g of protein",subtitle:"Coloured by source — plant proteins run cheaper"},
   data:{url:DATA("bulking_basket_prices.csv")},
-  transform:[
-    {calculate:"indexof(['meat','seafood','eggs','dairy','supplement'], datum.category) >= 0 ? 'Animal / supplement' : 'Plant'",as:"source"}
-  ],
+  transform:[{calculate:"indexof(['meat','seafood','eggs','dairy','supplement'],datum.category)>=0?'From animals':'From plants'",as:"source"}],
   layer:[
-    { mark:{type:"rule",color:"#bcb39c"},
+    { mark:{type:"rule",color:LINE},
       encoding:{
-        y:{field:"item",type:"nominal",sort:{field:"cost_per_10g_protein",order:"ascending"},title:null,axis:{labelLimit:160}},
-        x:{field:"cost_per_10g_protein",type:"quantitative",title:"Cost per 10 g protein (AUD $)"},
+        y:{field:"item",type:"nominal",sort:{field:"cost_per_10g_protein",order:"ascending"},title:null,axis:{labelLimit:170}},
+        x:{field:"cost_per_10g_protein",type:"quantitative",title:"Cost of 10 g protein (AUD $)"},
         x2:{datum:0}
       }},
-    { mark:{type:"circle",size:130,stroke:INK,strokeWidth:0.6},
+    { mark:{type:"circle",size:120,stroke:INK,strokeWidth:0.5},
       encoding:{
         y:{field:"item",type:"nominal",sort:{field:"cost_per_10g_protein",order:"ascending"}},
         x:{field:"cost_per_10g_protein",type:"quantitative"},
-        color:{field:"source",type:"nominal",scale:{domain:["Plant","Animal / supplement"],range:[OLIVE,RUST]},title:"Source"},
-        tooltip:[{field:"item",title:"Food"},{field:"cost_per_10g_protein",title:"$ / 10g protein"},{field:"source"}]
+        color:{field:"source",type:"nominal",scale:{domain:["From plants","From animals"],range:["#5f7138","#b5462b"]},title:null,legend:{orient:"bottom"}},
+        tooltip:[{field:"item",title:"Food"},{field:"cost_per_10g_protein",title:"$ per 10g protein",format:"$.2f"},{field:"source"}]
       }}
   ]
 };
 
-/* Chart 4 — heatmap minerals per dollar (high-value protein foods) */
 const c4 = {
   $schema:"https://vega.github.io/schema/vega-lite/v5.json",
-  config:baseConfig, width:"container", height:470,
-  title:{text:"Minerals per dollar",subtitle:"Among the better-value protein foods"},
+  config:baseConfig, width:"container", height:320,
   data:{url:DATA("bulking_basket_prices.csv")},
   transform:[
-    {filter:"datum.protein_g_per_dollar >= 12"},
+    {filter:"indexof(['Lentils, dry','Chickpeas, dry','Eggs (whole)','Tofu, firm','Beef mince (regular)','Chicken breast','Natural yoghurt','Skim milk powder'],datum.item)>=0"},
     {calculate:"datum.iron_mg100/(datum.price_aud_per_kg/10)",as:"Iron"},
     {calculate:"datum.zinc_mg100/(datum.price_aud_per_kg/10)",as:"Zinc"},
     {calculate:"datum.calcium_mg100/(datum.price_aud_per_kg/10)/10",as:"Calcium"},
-    {fold:["Iron","Zinc","Calcium"],as:["mineral","val_per_dollar"]}
+    {fold:["Iron","Zinc","Calcium"],as:["mineral","val"]}
   ],
-  mark:{type:"rect",stroke:PAPER,strokeWidth:1},
-  encoding:{
-    y:{field:"item",type:"nominal",sort:{field:"protein_g_per_dollar",order:"descending"},title:null,axis:{labelLimit:160}},
-    x:{field:"mineral",type:"nominal",title:null,axis:{orient:"top"}},
-    color:{field:"val_per_dollar",type:"quantitative",title:"per $1 (rel.)",
-           scale:{scheme:"yellowgreenblue"}},
-    tooltip:[{field:"item",title:"Food"},{field:"mineral"},{field:"val_per_dollar",title:"per $1",format:".1f"}]
-  }
-};
-
-/* ===================== ACT II ===================== */
-
-/* Chart 5 — cost per 1000 kJ */
-const c5 = {
-  $schema:"https://vega.github.io/schema/vega-lite/v5.json",
-  config:baseConfig, width:"container", height:480,
-  title:{text:"Cheapest calories: cost per 1,000 kJ",subtitle:"Lower is better — the fuel economy of a calorie surplus"},
-  data:{url:DATA("bulking_basket_prices.csv")},
-  encoding:{
-    y:{field:"item",type:"nominal",sort:"x",title:null,axis:{labelLimit:160}}
-  },
   layer:[
-    { mark:{type:"bar",cornerRadiusEnd:2},
+    { mark:{type:"rect",stroke:PAPER,strokeWidth:2},
       encoding:{
-        x:{field:"cost_per_1000kJ",type:"quantitative",title:"Cost per 1,000 kJ (AUD $)"},
-        color:{field:"category",type:"nominal",scale:CAT_SCALE,title:"Food group"},
-        tooltip:[{field:"item",title:"Food"},{field:"cost_per_1000kJ",title:"$ / 1000 kJ"},{field:"energy_kJ100",title:"Energy kJ/100g"}]
+        y:{field:"item",type:"nominal",sort:{field:"protein_g_per_dollar",order:"descending"},title:null,axis:{labelLimit:170}},
+        x:{field:"mineral",type:"nominal",title:null,axis:{orient:"top",labelFontSize:11,labelFontWeight:600}},
+        color:{field:"val",type:"quantitative",title:"per $1 (relative)",scale:{scheme:"yellowgreen"},legend:{orient:"bottom",gradientLength:120}},
+        tooltip:[{field:"item",title:"Food"},{field:"mineral"},{field:"val",title:"per $1 (rel.)",format:".1f"}]
       }},
-    { mark:{type:"text",align:"left",dx:4,font:"Spline Sans Mono",fontSize:9,color:INK},
+    { mark:{type:"text",fontSize:9,font:"Spline Sans Mono"},
       encoding:{
-        x:{field:"cost_per_1000kJ",type:"quantitative"},
-        text:{field:"cost_per_1000kJ",type:"quantitative",format:"$.2f"}
+        y:{field:"item",type:"nominal",sort:{field:"protein_g_per_dollar",order:"descending"}},
+        x:{field:"mineral",type:"nominal"},
+        text:{field:"val",type:"quantitative",format:".0f"},
+        color:{condition:{test:"datum.val>15",value:"#33401a"},value:"#5f7138"}
       }}
   ]
 };
 
-/* Chart 6 — stacked macro energy share */
+const c5 = {
+  $schema:"https://vega.github.io/schema/vega-lite/v5.json",
+  config:baseConfig, width:"container", height:470,
+  data:{url:DATA("bulking_basket_prices.csv")},
+  encoding:{ y:{field:"item",type:"nominal",sort:"x",title:null,axis:{labelLimit:170}} },
+  layer:[
+    { mark:{type:"bar",cornerRadiusEnd:2,height:{band:0.78}},
+      encoding:{
+        x:{field:"cost_per_1000kJ",type:"quantitative",title:"Cost of 1,000 kJ (AUD $)"},
+        color:{field:"category",type:"nominal",scale:CAT_SCALE,title:"Food group",legend:{orient:"bottom",columns:5,symbolType:"square"}},
+        tooltip:[{field:"item",title:"Food"},{field:"cost_per_1000kJ",title:"$ per 1000 kJ",format:"$.2f"},{field:"energy_kJ100",title:"Energy kJ/100g"}]
+      }},
+    { mark:{type:"text",align:"left",dx:4,font:"Spline Sans Mono",fontSize:9,color:INK},
+      encoding:{x:{field:"cost_per_1000kJ",type:"quantitative"},text:{field:"cost_per_1000kJ",type:"quantitative",format:"$.2f"}}}
+  ]
+};
+
 const c6 = {
   $schema:"https://vega.github.io/schema/vega-lite/v5.json",
-  config:baseConfig, width:"container", height:520,
-  title:{text:"Where each food's energy comes from",subtitle:"Share of energy from protein, fat and carbohydrate · sorted by protein density"},
+  config:baseConfig, width:"container", height:430,
   data:{url:DATA("bulking_basket_prices.csv")},
   transform:[
+    {filter:"indexof(['Whey protein powder','Chicken breast','Tuna, canned in brine','Beef mince (lean)','Eggs (whole)','Lentils, dry','Tofu, firm','Natural yoghurt','Rolled oats','White rice, uncooked','White bread','Peanut butter'],datum.item)>=0"},
     {calculate:"datum.protein_g100*17",as:"e_prot"},
     {calculate:"datum.fat_g100*37",as:"e_fat"},
     {calculate:"datum.carb_g100*16",as:"e_carb"},
@@ -524,232 +481,234 @@ const c6 = {
   ],
   mark:{type:"bar"},
   encoding:{
-    y:{field:"item",type:"nominal",sort:{field:"pProt",order:"descending"},title:null,axis:{labelLimit:160}},
+    y:{field:"item",type:"nominal",sort:{field:"pProt",order:"descending"},title:null,axis:{labelLimit:170}},
     x:{aggregate:"sum",field:"energy",type:"quantitative",stack:"normalize",title:"Share of energy",axis:{format:"%"}},
-    color:{field:"Macro",type:"nominal",
-           scale:{domain:["Protein","Fat","Carbohydrate"],range:[RUST,GOLD,STEEL]},title:"Energy from"},
+    color:{field:"Macro",type:"nominal",scale:{domain:["Protein","Fat","Carbohydrate"],range:["#b5462b","#d39b2c","#4a7a8c"]},title:"Energy from",legend:{orient:"bottom"}},
     order:{field:"Macro"},
-    tooltip:[{field:"item",title:"Food"},{field:"Macro"},{field:"energy",title:"kJ /100g",format:".0f"}]
+    tooltip:[{field:"item",title:"Food"},{field:"Macro"},{field:"energy",title:"kJ per 100g",format:".0f"}]
   }
 };
 
-/* Chart 7 — quadrant scatter */
 const c7 = {
   $schema:"https://vega.github.io/schema/vega-lite/v5.json",
   config:baseConfig, width:"container", height:440,
-  title:{text:"The bulking sweet spot",subtitle:"Cheap calories AND cheap protein live in the bottom-left"},
   data:{url:DATA("bulking_basket_prices.csv")},
   layer:[
-    { mark:{type:"rule",color:"#bcb39c",strokeDash:[4,4]},
-      encoding:{x:{datum:0.9}}},
-    { mark:{type:"rule",color:"#bcb39c",strokeDash:[4,4]},
-      encoding:{y:{datum:0.6}}},
-    { data:{values:[{x:0.18,y:0.18,t:"VALUE SWEET SPOT"}]},
-      mark:{type:"text",align:"left",color:OLIVE,fontWeight:700,fontSize:11,font:"Archivo"},
+    { mark:{type:"rule",color:LINE,strokeDash:[4,4]}, encoding:{x:{datum:0.9}}},
+    { mark:{type:"rule",color:LINE,strokeDash:[4,4]}, encoding:{y:{datum:0.6}}},
+    { data:{values:[{x:0.16,y:0.16,t:"BARGAIN ZONE"}]},
+      mark:{type:"text",align:"left",color:"#5f7138",fontWeight:700,fontSize:11,font:"Archivo"},
       encoding:{x:{field:"x",type:"quantitative"},y:{field:"y",type:"quantitative"},text:{field:"t"}}},
-    { mark:{type:"circle",opacity:0.85,stroke:INK,strokeWidth:0.5},
+    { mark:{type:"circle",opacity:0.85,stroke:INK,strokeWidth:0.4},
       encoding:{
-        x:{field:"cost_per_1000kJ",type:"quantitative",title:"Cost of calories ($ / 1,000 kJ)"},
-        y:{field:"cost_per_10g_protein",type:"quantitative",title:"Cost of protein ($ / 10 g)"},
-        size:{field:"energy_kJ100",type:"quantitative",legend:null,scale:{range:[40,400]}},
-        color:{field:"category",type:"nominal",scale:CAT_SCALE,title:"Food group"},
-        tooltip:[{field:"item",title:"Food"},{field:"cost_per_1000kJ",title:"$/1000kJ"},{field:"cost_per_10g_protein",title:"$/10g protein"}]
+        x:{field:"cost_per_1000kJ",type:"quantitative",title:"Cost of calories ($ per 1,000 kJ)"},
+        y:{field:"cost_per_10g_protein",type:"quantitative",title:"Cost of protein ($ per 10 g)"},
+        size:{field:"energy_kJ100",type:"quantitative",legend:null,scale:{range:[40,360]}},
+        color:{field:"category",type:"nominal",scale:CAT_SCALE,title:"Food group",legend:{orient:"bottom",columns:5,symbolType:"circle"}},
+        tooltip:[{field:"item",title:"Food"},{field:"cost_per_1000kJ",title:"$/1000kJ",format:"$.2f"},{field:"cost_per_10g_protein",title:"$/10g protein",format:"$.2f"}]
       }},
     { mark:{type:"text",align:"left",dx:8,dy:-6,font:"Archivo",fontSize:9,color:INK},
-      transform:[{filter:"datum.item==='Rolled oats'||datum.item==='Lentils, dry'||datum.item==='White rice, uncooked'||datum.item==='Atlantic salmon fillet'||datum.item==='Beef rump steak'||datum.item==='Kangaroo fillet'||datum.item==='Whey protein powder'"}],
+      transform:[{filter:"indexof(['Rolled oats','Lentils, dry','White rice, uncooked','Atlantic salmon fillet','Beef rump steak','Kangaroo fillet','Whey protein powder'],datum.item)>=0"}],
       encoding:{x:{field:"cost_per_1000kJ",type:"quantitative"},y:{field:"cost_per_10g_protein",type:"quantitative"},text:{field:"item"}}}
   ]
 };
 
-/* Chart 8 — SIGNATURE custom budget-bulk visual */
-/* Left: stacked energy composition per budget. Right facet: protein & kcal markers vs targets. */
-const c8 = {
-  $schema:"https://vega.github.io/schema/vega-lite/v5.json",
-  config:baseConfig,
-  title:{text:"The $10, $15 and $20 daily bulk",subtitle:"Food composition by energy (left) · protein & calories achieved (right). Built from cheapest-value foods."},
-  hconcat:[
-    {
-      width:300,height:360,
-      data:{url:DATA("budget_builds.csv")},
-      title:{text:"What's on the plate (by energy)",fontSize:12},
-      mark:{type:"bar",stroke:PAPER,strokeWidth:0.7},
-      encoding:{
-        x:{field:"budget",type:"nominal",title:null,sort:["$10/day","$15/day","$20/day"],axis:{labelFontSize:12,labelFontWeight:700}},
-        y:{aggregate:"sum",field:"energy_kJ",type:"quantitative",stack:"normalize",title:"Share of daily energy",axis:{format:"%"}},
-        color:{field:"food",type:"nominal",scale:{scheme:"category20b"},title:"Food",legend:{columns:1,labelFontSize:9,symbolSize:90}},
-        order:{field:"energy_kJ",sort:"descending"},
-        tooltip:[{field:"budget"},{field:"food"},{field:"grams",title:"grams"},{field:"protein_g",title:"protein g"},{field:"energy_kJ",title:"kJ"},{field:"cost_aud",title:"$"}]
-      }
-    },
-    {
-      width:220,height:360,
-      data:{url:DATA("budget_builds.csv")},
-      title:{text:"Protein achieved (g/day)",fontSize:12},
-      layer:[
-        { mark:{type:"bar",cornerRadiusEnd:3,color:RUST},
-          encoding:{
-            x:{field:"budget",type:"nominal",sort:["$10/day","$15/day","$20/day"],title:null,axis:{labelFontSize:12,labelFontWeight:700}},
-            y:{aggregate:"sum",field:"protein_g",type:"quantitative",title:"Protein (g)"},
-            tooltip:[{field:"budget"},{aggregate:"sum",field:"protein_g",title:"Total protein g"}]
-          }},
-        { mark:{type:"rule",color:INK,strokeDash:[5,4],size:1.5},
-          encoding:{y:{datum:150}}},
-        { data:{values:[{y:150,t:"150 g target"}]},
-          mark:{type:"text",align:"left",dx:-26,dy:-6,color:INK,fontSize:9,font:"Spline Sans Mono"},
-          encoding:{y:{field:"y",type:"quantitative"},text:{field:"t"}}},
-        { mark:{type:"text",dy:-8,color:INK,fontWeight:700,font:"Spline Sans Mono",fontSize:11},
-          encoding:{
-            x:{field:"budget",type:"nominal",sort:["$10/day","$15/day","$20/day"]},
-            y:{aggregate:"sum",field:"protein_g",type:"quantitative"},
-            text:{aggregate:"sum",field:"protein_g",format:".0f"}
-          }}
-      ]
-    },
-    {
-      width:220,height:360,
-      data:{url:DATA("budget_builds.csv")},
-      title:{text:"Calories achieved (kcal/day)",fontSize:12},
-      layer:[
-        { mark:{type:"bar",cornerRadiusEnd:3,color:STEEL},
-          transform:[{calculate:"datum.energy_kJ/4.184",as:"kcal"}],
-          encoding:{
-            x:{field:"budget",type:"nominal",sort:["$10/day","$15/day","$20/day"],title:null,axis:{labelFontSize:12,labelFontWeight:700}},
-            y:{aggregate:"sum",field:"kcal",type:"quantitative",title:"Energy (kcal)"},
-            tooltip:[{field:"budget"},{aggregate:"sum",field:"kcal",title:"Total kcal",format:".0f"}]
-          }},
-        { mark:{type:"rule",color:INK,strokeDash:[5,4],size:1.5},
-          encoding:{y:{datum:3000}}},
-        { data:{values:[{y:3000,t:"~3000 kcal surplus"}]},
-          mark:{type:"text",align:"left",dx:-30,dy:-6,color:INK,fontSize:9,font:"Spline Sans Mono"},
-          encoding:{y:{field:"y",type:"quantitative"},text:{field:"t"}}},
-        { mark:{type:"text",dy:-8,color:INK,fontWeight:700,font:"Spline Sans Mono",fontSize:11},
-          transform:[{calculate:"datum.energy_kJ/4.184",as:"kcal"}],
-          encoding:{
-            x:{field:"budget",type:"nominal",sort:["$10/day","$15/day","$20/day"]},
-            y:{aggregate:"sum",field:"kcal",type:"quantitative"},
-            text:{aggregate:"sum",field:"kcal",format:".0f"}
-          }}
-      ]
-    }
-  ]
-};
-
-/* ===================== ACT III ===================== */
-
-/* Chart 9 — multi-line CPI */
 const c9 = {
   $schema:"https://vega.github.io/schema/vega-lite/v5.json",
-  config:baseConfig, width:"container", height:420,
-  title:{text:"A decade of food prices (index, 2014 = 100)",subtitle:"The groups a bulker lives on"},
+  config:baseConfig, width:"container", height:400,
   data:{url:DATA("food_cpi_timeseries.csv")},
+  transform:[{filter:"datum.group!=='Food (all groups)'"}],
   layer:[
-    { mark:{type:"line",strokeWidth:2.5,point:{filled:true,size:30}},
+    { mark:{type:"line",strokeWidth:2.4,point:{filled:true,size:26}},
       encoding:{
         x:{field:"year",type:"ordinal",title:null,axis:{labelAngle:0}},
-        y:{field:"cpi_index_2014base",type:"quantitative",title:"Price index (2014 = 100)",scale:{zero:false}},
+        y:{field:"cpi_index_2014base",type:"quantitative",title:"Price level (2014 = 100)",scale:{zero:false}},
         color:{field:"group",type:"nominal",title:"Food group",
-               scale:{range:[RUST,STEEL,GOLD,OLIVE,INK]}},
-        tooltip:[{field:"group"},{field:"year"},{field:"cpi_index_2014base",title:"Index"},{field:"yoy_pct",title:"YoY %"}]
+               scale:{domain:["Bread & cereal","Dairy & related","Fruit & vegetables","Meat & seafood"],
+                      range:["#a9772f","#4a7a8c","#7d9150","#b5462b"]},legend:{orient:"bottom"}},
+        tooltip:[{field:"group"},{field:"year"},{field:"cpi_index_2014base",title:"Index"},{field:"yoy_pct",title:"Change vs last year %"}]
       }},
-    { data:{values:[{year:2021,t:"Inflation surge begins"}]},
-      mark:{type:"rule",color:MUTED,strokeDash:[3,3]},
-      encoding:{x:{field:"year",type:"ordinal"}}},
-    { data:{values:[{year:2021,y:101,t:"↑ 2021: surge begins"}]},
+    { data:{values:[{year:2021}]}, mark:{type:"rule",color:MUTED,strokeDash:[3,3]}, encoding:{x:{field:"year",type:"ordinal"}}},
+    { data:{values:[{year:2021,y:103,t:"2021: prices take off"}]},
       mark:{type:"text",align:"left",dx:6,color:MUTED,fontSize:10,font:"Archivo",fontWeight:600},
       encoding:{x:{field:"year",type:"ordinal"},y:{field:"y",type:"quantitative"},text:{field:"t"}}}
   ]
 };
 
-/* Chart 10 — SLOPE chart 2020 -> 2024 (upgraded from area) */
+const SLOPE = [
+  {group:"Bread & cereal", y2020:106, y2024:133, pct:25.5, ly:133, col:"#a9772f"},
+  {group:"Meat & seafood", y2020:108, y2024:132, pct:22.2, ly:127, col:"#b5462b"}
+];
+const slopeLong=[];
+SLOPE.forEach(d=>{ slopeLong.push({group:d.group,year:"2020",idx:d.y2020,pct:d.pct,ly:d.ly,col:d.col});
+                   slopeLong.push({group:d.group,year:"2024",idx:d.y2024,pct:d.pct,ly:d.ly,col:d.col}); });
 const c10 = {
   $schema:"https://vega.github.io/schema/vega-lite/v5.json",
-  config:baseConfig, width:"container", height:440,
-  title:{text:"The jump across the spike: 2020 → 2024",subtitle:"Slope = how hard each food group's price climbed"},
-  data:{url:DATA("food_cpi_timeseries.csv")},
-  transform:[{filter:"datum.year==2020||datum.year==2024"}],
-  encoding:{
-    x:{field:"year",type:"ordinal",title:null,scale:{padding:0.45},axis:{labelFontSize:12,labelFontWeight:700}},
-    y:{field:"cpi_index_2014base",type:"quantitative",title:"Price index (2014 = 100)",scale:{zero:false}},
-    color:{field:"group",type:"nominal",scale:{range:[RUST,STEEL,GOLD,OLIVE,INK]},title:"Food group"}
-  },
+  config:baseConfig, width:"container", height:420, padding:{right:150},
+  title:{text:"The carbs and the protein, 2020 → 2024",subtitle:"Steeper line = the food that climbed harder"},
   layer:[
-    {mark:{type:"line",strokeWidth:2.5}},
-    {mark:{type:"circle",size:90,stroke:INK,strokeWidth:0.5}},
-    {transform:[{filter:"datum.year==2024"}],
-     mark:{type:"text",align:"left",dx:8,font:"Archivo",fontSize:10,fontWeight:600},
-     encoding:{text:{field:"group"}}},
-    {mark:{type:"text",align:"center",dy:-12,font:"Spline Sans Mono",fontSize:9,color:INK},
-     encoding:{text:{field:"cpi_index_2014base",type:"quantitative"}}}
+    { data:{values:[{year:"2020",idx:107},{year:"2024",idx:131}]},
+      mark:{type:"line",strokeWidth:7,color:"#ddd2b9",opacity:0.55,strokeCap:"round"},
+      encoding:{x:{field:"year",type:"ordinal"},y:{field:"idx",type:"quantitative",scale:{domain:[103,137]}}}},
+    { data:{values:[{year:"2020",idx:107,t:"All-food average (+22%)"}]},
+      mark:{type:"text",align:"left",dx:6,dy:16,color:"#9a8f73",fontSize:9.5,fontStyle:"italic",font:"Archivo"},
+      encoding:{x:{field:"year",type:"ordinal"},y:{field:"idx",type:"quantitative",scale:{domain:[103,137]}},text:{field:"t"}}},
+    { data:{values:slopeLong}, mark:{type:"line",strokeWidth:3.5},
+      encoding:{
+        x:{field:"year",type:"ordinal",title:null,scale:{padding:0.55},axis:{labelFontSize:13,labelFontWeight:700,labelAngle:0}},
+        y:{field:"idx",type:"quantitative",title:"Price level (2014 = 100)",scale:{domain:[103,137]}},
+        detail:{field:"group"}, color:{field:"col",type:"nominal",scale:null}
+      }},
+    { data:{values:slopeLong}, mark:{type:"circle",size:130,stroke:PAPER,strokeWidth:1.4},
+      encoding:{x:{field:"year",type:"ordinal"},y:{field:"idx",type:"quantitative"},color:{field:"col",type:"nominal",scale:null},
+        tooltip:[{field:"group",title:"Food group"},{field:"year"},{field:"idx",title:"Index"},{field:"pct",title:"Change 2020-24 %",format:".1f"}]}},
+    { data:{values:slopeLong.filter(d=>d.year==="2020")},
+      mark:{type:"text",align:"right",dx:-9,font:"Spline Sans Mono",fontSize:10},
+      encoding:{x:{field:"year",type:"ordinal"},y:{field:"idx",type:"quantitative"},color:{field:"col",type:"nominal",scale:null},text:{field:"idx",type:"quantitative"}}},
+    { data:{values:slopeLong.filter(d=>d.year==="2024")},
+      mark:{type:"text",align:"left",dx:14,font:"Archivo",fontSize:12,fontWeight:700},
+      encoding:{x:{field:"year",type:"ordinal"},y:{field:"ly",type:"quantitative"},color:{field:"col",type:"nominal",scale:null},text:{field:"group"}}},
+    { data:{values:slopeLong.filter(d=>d.year==="2024")},
+      mark:{type:"text",align:"left",dx:14,dy:14,font:"Spline Sans Mono",fontSize:10},
+      encoding:{x:{field:"year",type:"ordinal"},y:{field:"ly",type:"quantitative"},color:{field:"col",type:"nominal",scale:null},text:{field:"pct",type:"quantitative",format:"+.1f"}}},
+    { data:{values:slopeLong.filter(d=>d.year==="2024")},
+      mark:{type:"rule",strokeWidth:0.6,opacity:0.35,strokeDash:[2,2]},
+      encoding:{x:{field:"year",type:"ordinal"},y:{field:"idx",type:"quantitative"},y2:{field:"ly"},color:{field:"col",type:"nominal",scale:null}}}
   ]
 };
 
-/* Chart 11 — MAP choropleth (Albers) of AU states */
 const c11 = {
   $schema:"https://vega.github.io/schema/vega-lite/v5.json",
   config:baseConfig, width:"container", height:480,
-  title:{text:"Weekly cost of a bulking basket by state",subtitle:"Shaded by relative grocery price index (Australia = 100) · Albers projection"},
-  projection:{type:"albers",rotate:[-132,0,0],center:[0,-27],parallels:[-18,-36],scale:780,translate:[420,260]},
+  projection:{type:"albers",rotate:[-132,0,0],center:[0,-26],parallels:[-18,-36],scale:780,translate:[400,250]},
   layer:[
-    { data:{ url:"https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json",
-             format:{type:"topojson",feature:"countries"}},
-      transform:[{filter:"datum.properties.name==='Australia'"}],
-      mark:{type:"geoshape",fill:"#e3dac6",stroke:"#bcb39c",strokeWidth:0.6}},
-    { data:{url:DATA("state_price_index.csv")},
-      mark:{type:"circle",stroke:INK,strokeWidth:0.8,opacity:0.92},
+    /* choropleth: states shaded by their capital's grocery index */
+    { data:{url:DATA("au_states.geojson"),format:{type:"json",property:"features"}},
+      transform:[{calculate:"datum.properties.grocery_index",as:"gi"},
+                 {calculate:"datum.properties.state",as:"state"}],
+      mark:{type:"geoshape",stroke:"#fbf8f0",strokeWidth:1},
       encoding:{
-        longitude:{field:"lng",type:"quantitative"},
-        latitude:{field:"lat",type:"quantitative"},
-        size:{field:"weekly_bulk_cost_aud",type:"quantitative",title:"Weekly cost (AUD $)",scale:{range:[180,1400]}},
-        color:{field:"grocery_price_index",type:"quantitative",title:"Price index",
-               scale:{scheme:"orangered",domain:[96,118]}},
-        tooltip:[{field:"state",title:"State/Territory"},{field:"weekly_bulk_cost_aud",title:"Weekly basket $"},{field:"grocery_price_index",title:"Price index"}]
+        color:{field:"gi",type:"quantitative",title:"Grocery price index (national avg = 100)",
+               scale:{scheme:"yelloworangered",domain:[95,105]},
+               legend:{orient:"bottom",gradientLength:160}},
+        tooltip:[{field:"state",title:"State / Territory"},
+                 {field:"gi",title:"Grocery index",format:".1f"}]
       }},
-    { data:{url:DATA("state_price_index.csv")},
-      mark:{type:"text",dy:-2,font:"Spline Sans Mono",fontSize:9,fontWeight:600,color:INK},
+    /* city cost bubbles */
+    { data:{url:DATA("city_grocery_index.csv")},
+      mark:{type:"circle",stroke:INK,strokeWidth:0.9,fill:"#1c1a16",opacity:0.85},
       encoding:{
-        longitude:{field:"lng",type:"quantitative"},
-        latitude:{field:"lat",type:"quantitative"},
-        text:{field:"code"}
+        longitude:{field:"lng",type:"quantitative"}, latitude:{field:"lat",type:"quantitative"},
+        size:{field:"weekly_bulk_cost_aud",type:"quantitative",title:"Weekly basket (AUD $)",
+              scale:{range:[120,520],domain:[57,64]},legend:{orient:"bottom"}},
+        tooltip:[{field:"city",title:"City"},{field:"state",title:"State/Territory"},
+          {field:"weekly_bulk_cost_aud",title:"Weekly basket $",format:"$.2f"},{field:"grocery_index",title:"Grocery index"}]
       }},
-    { data:{values:[{lng:131,lat:-12.4,t:"NT: ~18% above average"}]},
-      mark:{type:"text",align:"left",dx:14,color:RUST,fontWeight:700,font:"Archivo",fontSize:10},
+    /* city labels */
+    { data:{url:DATA("city_grocery_index.csv")},
+      mark:{type:"text",dy:-12,font:"Spline Sans Mono",fontSize:9,fontWeight:600,color:INK},
+      encoding:{longitude:{field:"lng",type:"quantitative"},latitude:{field:"lat",type:"quantitative"},text:{field:"city"}}},
+    { data:{values:[{lng:118,lat:-22,t:"Groceries vary only ~10% nationwide"}]},
+      mark:{type:"text",align:"left",color:ACCENT,fontWeight:700,font:"Archivo",fontSize:11.5},
       encoding:{longitude:{field:"lng",type:"quantitative"},latitude:{field:"lat",type:"quantitative"},text:{field:"t"}}}
   ]
 };
 
-/* Chart 12 — then vs now derived (basket at 2014 vs 2025) */
 const c12 = {
   $schema:"https://vega.github.io/schema/vega-lite/v5.json",
-  config:baseConfig, width:"container", height:300,
-  title:{text:"The same bulking week: 2014 vs 2025",subtitle:"Identical basket, re-priced with the ABS food index"},
-  data:{values:[
-    {year:"2014",cost:42.00,label:"$42.00"},
-    {year:"2025",cost:56.28,label:"$56.28"}
-  ]},
+  config:baseConfig, width:"container", height:290,
+  data:{values:[{year:"2014",cost:45.52,label:"$45.52"},{year:"2025",cost:61.00,label:"$61.00"}]},
   layer:[
-    { mark:{type:"bar",cornerRadiusEnd:3,size:90},
+    { mark:{type:"bar",cornerRadiusEnd:3,width:{band:0.5}},
       encoding:{
         x:{field:"year",type:"nominal",title:null,axis:{labelFontSize:13,labelFontWeight:700}},
         y:{field:"cost",type:"quantitative",title:"Weekly basket cost (AUD $)"},
-        color:{field:"year",type:"nominal",scale:{domain:["2014","2025"],range:[OLIVE,RUST]},legend:null},
-        tooltip:[{field:"year"},{field:"cost",title:"Weekly cost $"}]
+        color:{field:"year",type:"nominal",scale:{domain:["2014","2025"],range:["#7d9150","#b5462b"]},legend:null},
+        tooltip:[{field:"year"},{field:"cost",title:"Weekly cost $",format:"$.2f"}]
       }},
-    { mark:{type:"text",dy:-10,font:"Anton",fontSize:18,color:INK},
+    { mark:{type:"text",dy:-10,font:"Fraunces",fontSize:18,fontWeight:600,color:INK},
       encoding:{x:{field:"year",type:"nominal"},y:{field:"cost",type:"quantitative"},text:{field:"label"}}},
-    { data:{values:[{x:"2025",y:56.28,t:"+34% since 2014"}]},
-      mark:{type:"text",align:"center",dy:-34,color:RUST,fontWeight:700,font:"Archivo",fontSize:13},
+    { data:{values:[{x:"2025",y:61,t:"+34% since 2014"}]},
+      mark:{type:"text",align:"center",dy:-34,color:ACCENT,fontWeight:700,font:"Archivo",fontSize:13},
       encoding:{x:{field:"x",type:"nominal"},y:{field:"y",type:"quantitative"},text:{field:"t"}}}
   ]
 };
 
-/* ===================== RENDER ===================== */
-const specs = [["c1",c1],["c2",c2],["c3",c3],["c4",c4],["c5",c5],["c6",c6],
-               ["c7",c7],["c8",c8],["c9",c9],["c10",c10],["c11",c11],["c12",c12]];
-specs.forEach(([id,spec])=>{
-  vegaEmbed("#"+id, spec, EMBED).catch(e=>{
-    document.getElementById(id).innerHTML =
-      "<p style='color:#c1440e;font-family:monospace;font-size:.8rem'>Chart "+id+" failed to load: "+e+"</p>";
-    console.error(id,e);
+/* SIGNATURE chart 8 (interactive) */
+function spec_c8(budget){
+  return {
+    $schema:"https://vega.github.io/schema/vega-lite/v5.json",
+    config:baseConfig,
+    hconcat:[
+      { width:300,height:340,
+        data:{url:DATA("budget_builds.csv")},
+        transform:[{filter:"datum.budget==='"+budget+"'"}],
+        title:{text:"What's on the plate",subtitle:"share of the day's energy",fontSize:12},
+        mark:{type:"bar",stroke:PAPER,strokeWidth:0.8},
+        encoding:{
+          x:{datum:budget,type:"nominal",title:null,axis:{labels:false,ticks:false}},
+          y:{aggregate:"sum",field:"energy_kJ",type:"quantitative",stack:"normalize",title:"Share of daily energy",axis:{format:"%"}},
+          color:{field:"food",type:"nominal",scale:{scheme:"tableau20"},title:"Food",legend:{orient:"right",columns:1,labelFontSize:9.5,symbolSize:80}},
+          order:{field:"energy_kJ",sort:"descending"},
+          tooltip:[{field:"food",title:"Food"},{field:"grams",title:"grams"},{field:"protein_g",title:"protein g"},{field:"energy_kJ",title:"kJ"},{field:"cost_aud",title:"cost $",format:"$.2f"}]
+        }},
+      { width:150,height:340,
+        data:{url:DATA("budget_builds.csv")},
+        transform:[{filter:"datum.budget==='"+budget+"'"}],
+        title:{text:"Protein",subtitle:"grams per day",fontSize:12},
+        layer:[
+          { mark:{type:"bar",cornerRadiusEnd:3,color:"#b5462b",width:{band:0.5}},
+            encoding:{x:{datum:"",type:"nominal",title:null,axis:{labels:false,ticks:false}},
+              y:{aggregate:"sum",field:"protein_g",type:"quantitative",title:"Protein (g)",scale:{domain:[0,340]}},
+              tooltip:[{aggregate:"sum",field:"protein_g",title:"Total protein g",format:".0f"}]}},
+          { mark:{type:"rule",color:INK,strokeDash:[5,4],size:1.5}, encoding:{y:{datum:150}}},
+          { data:{values:[{t:"150 g target"}]}, mark:{type:"text",align:"left",x:4,dy:-6,color:INK,fontSize:9,font:"Spline Sans Mono"},
+            encoding:{y:{datum:150},text:{field:"t"}}},
+          { mark:{type:"text",dy:-9,color:INK,fontWeight:700,font:"Fraunces",fontSize:16},
+            encoding:{x:{datum:""},y:{aggregate:"sum",field:"protein_g",type:"quantitative"},text:{aggregate:"sum",field:"protein_g",format:".0f"}}}
+        ]},
+      { width:150,height:340,
+        data:{url:DATA("budget_builds.csv")},
+        transform:[{filter:"datum.budget==='"+budget+"'"},{calculate:"datum.energy_kJ/4.184",as:"kcal"}],
+        title:{text:"Calories",subtitle:"per day",fontSize:12},
+        layer:[
+          { mark:{type:"bar",cornerRadiusEnd:3,color:"#4a7a8c",width:{band:0.5}},
+            encoding:{x:{datum:"",type:"nominal",title:null,axis:{labels:false,ticks:false}},
+              y:{aggregate:"sum",field:"kcal",type:"quantitative",title:"Energy (Calories)",scale:{domain:[0,4200]}},
+              tooltip:[{aggregate:"sum",field:"kcal",title:"Total Calories",format:".0f"}]}},
+          { mark:{type:"rule",color:INK,strokeDash:[5,4],size:1.5}, encoding:{y:{datum:3000}}},
+          { data:{values:[{t:"~3000 surplus"}]}, mark:{type:"text",align:"left",x:4,dy:-6,color:INK,fontSize:9,font:"Spline Sans Mono"},
+            encoding:{y:{datum:3000},text:{field:"t"}}},
+          { mark:{type:"text",dy:-9,color:INK,fontWeight:700,font:"Fraunces",fontSize:16},
+            encoding:{x:{datum:""},y:{aggregate:"sum",field:"kcal",type:"quantitative"},text:{aggregate:"sum",field:"kcal",format:".0f"}}}
+        ]}
+    ]
+  };
+}
+
+/* ===================== RENDER & INTERACTIVITY ===================== */
+const staticSpecs=[["c2",c2],["c3",c3],["c4",c4],["c5",c5],["c6",c6],["c7",c7],["c9",c9],["c10",c10],["c11",c11],["c12",c12]];
+staticSpecs.forEach(([id,spec])=>{
+  vegaEmbed("#"+id,spec,EMBED).catch(e=>{document.getElementById(id).innerHTML="<p style='color:#c1440e;font-family:monospace;font-size:.8rem'>Chart failed: "+e+"</p>";console.error(id,e);});
+});
+
+function renderC1(cat){ vegaEmbed("#c1",spec_c1(cat),EMBED).catch(e=>console.error("c1",e)); }
+renderC1("all");
+document.querySelectorAll("#filter1 .btn").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll("#filter1 .btn").forEach(x=>x.classList.remove("active","accent"));
+    b.classList.add("active"); if(b.dataset.cat==="all")b.classList.add("accent");
+    renderC1(b.dataset.cat);
+  });
+});
+
+function renderC8(b){ vegaEmbed("#c8panel",spec_c8(b),EMBED).catch(e=>console.error("c8",e)); }
+renderC8("$10/day");
+document.querySelectorAll("#budgetToggle .btn").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll("#budgetToggle .btn").forEach(x=>x.classList.remove("active","accent"));
+    b.classList.add("active","accent");
+    renderC8(b.dataset.b);
   });
 });
 </script>
