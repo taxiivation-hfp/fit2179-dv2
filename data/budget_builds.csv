@@ -1,0 +1,25 @@
+budget,food,grams,protein_g,energy_kJ,cost_aud
+$10/day,Rolled oats,200,24.4,3128,0.5
+$10/day,"White rice, uncooked",250,17.5,3555,0.55
+$10/day,"Lentils, dry",200,56.6,2706,0.8
+$10/day,Eggs (whole),180,22.7,959,1.49
+$10/day,"Milk, regular fat",1000,33.0,2700,1.5
+$10/day,Peanut butter,60,13.3,1497,0.42
+$10/day,Banana,240,3.4,958,0.96
+$15/day,Rolled oats,200,24.4,3128,0.5
+$15/day,"White rice, uncooked",250,17.5,3555,0.55
+$15/day,Chicken breast,350,78.8,1442,4.2
+$15/day,"Lentils, dry",150,42.4,2030,0.6
+$15/day,Eggs (whole),180,22.7,959,1.49
+$15/day,Natural yoghurt,400,20.4,1224,2.2
+$15/day,Peanut butter,60,13.3,1497,0.42
+$15/day,Banana,240,3.4,958,0.96
+$20/day,Rolled oats,150,18.3,2346,0.38
+$20/day,"White rice, uncooked",250,17.5,3555,0.55
+$20/day,Chicken breast,400,90.0,1648,4.8
+$20/day,Beef mince (lean),200,45.8,1082,3.2
+$20/day,Whey protein powder,90,76.5,1411,2.7
+$20/day,Natural yoghurt,500,25.5,1530,2.75
+$20/day,Peanut butter,60,13.3,1497,0.42
+$20/day,Banana,240,3.4,958,0.96
+$20/day,Eggs (whole),120,15.1,640,1.0
