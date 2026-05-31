@@ -1,0 +1,9 @@
+city,state,code,lat,lng,grocery_index,weekly_bulk_cost_aud
+Melbourne,Victoria,VIC,-37.8136,144.9631,104.6,63.81
+Canberra,Aust. Capital Territory,ACT,-35.2809,149.13,103.8,63.29
+Sydney,New South Wales,NSW,-33.8688,151.2093,103.5,63.15
+Adelaide,South Australia,SA,-34.9285,138.6007,99.0,60.41
+Brisbane,Queensland,QLD,-27.4698,153.0251,98.5,60.11
+Perth,Western Australia,WA,-31.9523,115.8613,98.2,59.89
+Hobart,Tasmania,TAS,-42.8821,147.3272,97.1,59.22
+Darwin,Northern Territory,NT,-12.4634,130.8456,95.3,58.11
